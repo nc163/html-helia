@@ -1,5 +1,5 @@
 {
-  "name": "ipfs-tag",
+  "name": "ipfs-tag-example",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -10,6 +10,7 @@
     "@types/node": "^16.18.2",
     "@types/react": "^18.0.24",
     "@types/react-dom": "^18.0.8",
+    "ipfs-tag": "github:nc163/ipfs-tag#develop",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "5.0.1",

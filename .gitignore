@@ -3,16 +3,9 @@
 .eslintcache
 .next
 .pnpm-debug.log*
+.ipfs
 cache
 coverage
 dist
 node_modules
 tsconfig.tsbuildinfo
-
-# local env files
-.env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-.envrc

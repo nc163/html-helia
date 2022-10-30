@@ -5,8 +5,9 @@
     "version": "0.1.0",
     "private": true,
     "files": [
-        "packages"
-    ],
+        "lib",
+        "esm"
+      ],
     "dependencies": {
         "ipfs-core": "^0.15.2",
         "react": "^18.2.0"
@@ -26,7 +27,8 @@
         "eslint-plugin-react-hooks": "^4.6.0",
         "typescript": "^4.8.4"
     },
-    "scripts": {},
+    "scripts": {
+    },
     "eslintConfig": {
         "extends": [
             "react-app",
