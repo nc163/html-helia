@@ -32,6 +32,7 @@
     "scripts": {
         "tsc": "../../node_modules/.bin/tsc"
     },
+    "main": "./src/index.js",
     "files": [
         "./src/**/*"
     ],
@@ -42,7 +43,7 @@
         ]
     },
     "keywords": [
-        "ipfs",
+        "IPFS",
         "dapps"
     ]
 }
