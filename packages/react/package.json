@@ -5,6 +5,7 @@
     "version": "0.0.1",
     "private": true,
     "dependencies": {
+        "ipfs": "^0.65.0",
         "ipfs-core": "^0.15.2",
         "react": "^18.2.0"
     },
@@ -22,12 +23,10 @@
         "eslint-plugin-react": "^7.31.10",
         "eslint-plugin-react-hooks": "^4.6.0",
         "ts-node": "^10.9.1",
-        "typescript": "^4.8.4",
-        "util": "^0.12.4"
+        "typescript": "^4.8.4"
     },
     "peerDependencies": {
-        "ipfs-core": "^0.15.2",
-        "ipfs-core-types": "^0.11.1"
+        "react": "^18.2.0"
     },
     "scripts": {
         "tsc": "../../node_modules/.bin/tsc"
@@ -36,14 +35,9 @@
     "files": [
         "./src/**/*"
     ],
-    "eslintConfig": {
-        "extends": [
-            "react-app",
-            "react-app/jest"
-        ]
-    },
     "keywords": [
         "IPFS",
-        "dapps"
+        "dapps",
+        "react-component"
     ]
 }
