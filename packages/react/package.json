@@ -6,8 +6,6 @@
     "private": true,
     "dependencies": {
         "ipfs-core": "^0.15.2",
-        "ipfs-core-config": "^0.6.0",
-        "ipfs-core-types": "^0.13.0",
         "react": "^18.2.0"
     },
     "devDependencies": {
@@ -25,6 +23,9 @@
         "eslint-plugin-react-hooks": "^4.6.0",
         "typescript": "^4.8.4",
         "util": "^0.12.4"
+    },
+    "peerDependencies": {
+        "ipfs-core": "^0.15.2"
     },
     "scripts": {},
     "files": [

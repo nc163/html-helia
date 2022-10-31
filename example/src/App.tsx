@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import {} from "@ipfs-tag/react"
+import {} from "ipfs-tag/packages/react"
 
 function App() {
   return (
