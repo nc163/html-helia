@@ -10,7 +10,8 @@
     "devDependencies": {
         "eslint": "^8.26.0"
     },
-    "scripts": {},
+    "scripts": {
+    },
     "files": [
         "packages/core",
         "packages/react"

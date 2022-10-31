@@ -1,5 +1,6 @@
+import { IPFS } from "ipfs-core-types"
 import * as React from "react"
-import { create, IPFS } from 'ipfs-core'
+import { create } from 'ipfs-core'
 import { IPFSContext } from "../index"
 
 export function IPFSTagProvider({ children }: React.PropsWithChildren<React.ReactNode>) {
