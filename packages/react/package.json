@@ -28,9 +28,7 @@
     },
     "scripts": {},
     "files": [
-        "/context",
-        "/hooks",
-        "/provider"
+        "/src"
     ],
     "eslintConfig": {
         "extends": [

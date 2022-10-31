@@ -1,6 +1,6 @@
 import { IPFSContext, useIPFSContext } from "./context"
 import { IPFSTagProvider } from "./provider"
-import { GetVersion } from "./src/hooks"
+import { GetVersion } from "./hooks"
 
 export {
     IPFSContext,
