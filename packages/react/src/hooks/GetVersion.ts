@@ -1,4 +1,4 @@
-import { useIPFSContext } from "../";
+import { useIPFSContext } from "../..";
 
 export const Stop = (cid: string) => {
     const [ipfs] = useIPFSContext();
