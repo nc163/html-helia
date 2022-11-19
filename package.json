@@ -3,23 +3,15 @@
     "description": "",
     "license": "MIT",
     "version": "0.0.1",
-    "private": true,
-    "dependencies": {
-        "ipfs-core": "^0.15.2"
-    },
     "devDependencies": {
-        "eslint": "^8.26.0"
+        "dotenv": "^16.0.3",
+        "ipfs-core": "^0.16.1",
+        "multiformats": "^10.0.2"
     },
     "scripts": {
     },
     "files": [
-        "packages/core",
-        "packages/react"
-    ],
-    "workspaces": [
-        "packages/core",
-        "packages/react",
-        "packages/react-example"
+        "src"
     ],
     "keywords": [
         "ipfs",

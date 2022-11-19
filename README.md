@@ -1,24 +1,10 @@
 # ipfs-tag
 
-- [x] ipfs
-- [ ] ipfs cluster
-
-## get
-
-- [ ] css
+- [ ] text
 - [ ] image
 - [ ] video
-- [ ] text
 
-```jsx
-<IpfsProvider>
-    <div>
-        <Ipfs image cid="QmPEgKBFn4ZYSsfS5ptQdnbqvbLEpFATVhzGCGZT8AcnMr" />
-        <Ipfs video cid="" />
-        <Ipfs text  cid="QmT78zSuBmuS4z925WZfrqQ1qHaJ56DQaTfyMUF7F8ff5o" />
-    </div>
-</IpfsProvider>
+```html
+    <div className='ipfs-tag' data-provide="ipfs" data-type="text"  data-cid="QmT78zSuBmuS4z925WZfrqQ1qHaJ56DQaTfyMUF7F8ff5o"></div>
+    <div className='ipfs-tag' data-provide="ipfs" data-type="image" data-cid="QmT78zSuBmuS4z925WZfrqQ1qHaJ56DQaTfyMUF7F8ff5o"></div>
 ```
-
-## post
-

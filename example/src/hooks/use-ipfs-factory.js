@@ -33,7 +33,7 @@ export default function useIpfsFactory () {
     }
   }, [])
 
-  /**
+/**
  * @returns {Options}
  */
 const ipfsOptions = () => ({
@@ -59,7 +59,7 @@ const ipfsOptions = () => ({
     } else {
       try {
         console.time('IPFS Started')
-        ipfs = await create(ipfsOptions)
+        ipfs = await create(ipfsOptions())
         console.timeEnd('IPFS Started')
       } catch (error) {
         console.error('IPFS init error:', error)
