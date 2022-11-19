@@ -3,12 +3,16 @@
     "description": "",
     "license": "MIT",
     "version": "0.0.1",
+    "main": "src/index.js",
+    "scripts": {
+    },
     "devDependencies": {
         "dotenv": "^16.0.3",
         "ipfs-core": "^0.16.1",
         "multiformats": "^10.0.2"
     },
-    "scripts": {
+    "bugs": {
+      "url": "https://github.com/nc163/ipfs-tag/issues"
     },
     "files": [
         "src"
