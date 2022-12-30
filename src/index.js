@@ -1,6 +1,3 @@
-import {find_ipfs_text_cid, dag_text, append_text} from './ipfs-text-tag.js'
+import IpfsTag from './ipfs-tag.js'
 
-
-export {
-    find_ipfs_text_cid, dag_text, append_text
-}
+export default IpfsTag

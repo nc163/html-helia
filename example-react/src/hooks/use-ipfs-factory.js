@@ -32,24 +32,21 @@ export default function useIpfsFactory () {
       }
     }
   }, [])
-
+  
 /**
  * @returns {Options}
  */
-const ipfsOptions = () => ({
+const ipfsOptions = {
     start: true,
-    EXPERIMENTAL: {},
-    preload: {
-      enabled: true, // preload by default, unless in test env
-      addresses: [
-        '/dns4/node0.preload.ipfs.io/https',
-        '/dns4/node1.preload.ipfs.io/https',
-        '/dns4/node2.preload.ipfs.io/https',
-        '/dns4/node3.preload.ipfs.io/https'
-      ]
-    }
-  })
-
+    // preload: {
+    //   addresses: [
+    //     '/dns4/node0.preload.ipfs.io/http',
+    //     '/dns4/node1.preload.ipfs.io/http',
+    //     '/dns4/node2.preload.ipfs.io/http',
+    //     '/dns4/node3.preload.ipfs.io/http'
+    //   ]
+    // }
+  }
   async function startIpfs () {
     if (ipfs) {
       console.log('IPFS already started')
@@ -59,7 +56,7 @@ const ipfsOptions = () => ({
     } else {
       try {
         console.time('IPFS Started')
-        ipfs = await create(ipfsOptions())
+        ipfs = await create(ipfsOptions)
         console.timeEnd('IPFS Started')
       } catch (error) {
         console.error('IPFS init error:', error)
