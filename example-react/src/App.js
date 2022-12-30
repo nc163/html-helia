@@ -36,8 +36,8 @@ function App() {
         >
           Learn React
         </a>
-        <div className='ipfs-tag' data-provide="ipfs" data-type="text"  data-cid="QmT78zSuBmuS4z925WZfrqQ1qHaJ56DQaTfyMUF7F8ff5o"></div>
-        <div className='ipfs-tag' data-provide="ipfs" data-type="image" data-cid="QmUQzaHKA5qx1rnuj3mve9NzVGEjsmFqjXyhynoXcU1pvJ"></div>
+        <div className='ipfs-tag' data-type="text"  data-cid="QmT78zSuBmuS4z925WZfrqQ1qHaJ56DQaTfyMUF7F8ff5o"></div>
+        <div className='ipfs-tag' data-type="image" data-cid="QmUQzaHKA5qx1rnuj3mve9NzVGEjsmFqjXyhynoXcU1pvJ"></div>
       </header>
     </div>
   );
