@@ -6,7 +6,7 @@
     "main": "src/index.js",
     "scripts": {},
     "devDependencies": {
-        "ipfs-core": "^0.16.1",
+        "ipfs-core": "^0.18.0",
         "multiformats": "^10.0.2"
     },
     "bugs": {
