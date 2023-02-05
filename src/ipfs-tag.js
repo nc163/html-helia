@@ -96,6 +96,9 @@ class IpfsTag {
             case 'html':
               element.innerHTML = this.replaceControlCharacters(event.target.result);
               break;
+            case 'css':
+              element.innerHTML = event.target.result;
+              break;
             case 'javascript':
               element.innerHTML = event.target.result;
               break;
@@ -122,10 +125,20 @@ class IpfsTag {
         reader.readAsDataURL(blob);
         break;
       case 'audio':
-        
+        reader.addEventListener('load', (event) => {
+          if(element.tagName === 'AUDIO') {
+            element.src = event.target.result;
+        }
+        });
+        reader.readAsDataURL(blob);
         break;
       case 'video':
-
+        reader.addEventListener('load', (event) => {
+          if(element.tagName === 'VIDEO') {
+              element.src = event.target.result;
+          }
+        });
+        reader.readAsDataURL(blob);
         break;
       default:
         break;
