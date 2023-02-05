@@ -1,11 +1,11 @@
 # ipfs-tag
 
 
-- [ ] text
-- [ ] image
+- [x] text
+- [x] image
+- [ ] audio
 - [ ] video
 - [ ] 優先度
-- [ ] upload
 
 ## 
 

@@ -39,7 +39,6 @@ class IpfsTag {
   }
 
   /**
-   * @param {IPFS} ipfs
    * @param {Document | HTMLElement} element 
    * @returns {Boolean}
    */
@@ -86,17 +85,21 @@ class IpfsTag {
 
     // see https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URLs
 
+    // MIME_type see https://developer.mozilla.org/ja/docs/Web/HTTP/Basics_of_HTTP/MIME_types
     switch(media.type) {
       case 'text':
         reader.onload = (event) => {
           switch(media.subtype) {
+            case 'plain':
+              element.innerText = this.escapeHtml(this.replaceControlCharacters(event.target.result));
+              break;
             case 'html':
               element.innerHTML = this.replaceControlCharacters(event.target.result);
               break;
-            case 'plain':
-            default:
-              element.innerText = this.escapeHtml(this.replaceControlCharacters(event.target.result));
+            case 'javascript':
+              element.innerHTML = event.target.result;
               break;
+            default:
           }
         }
         reader.readAsText(blob, encord);
@@ -117,6 +120,12 @@ class IpfsTag {
           }
         });
         reader.readAsDataURL(blob);
+        break;
+      case 'audio':
+        
+        break;
+      case 'video':
+
         break;
       default:
         break;
