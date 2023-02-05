@@ -9,6 +9,7 @@ class IpfsTag {
   static defaultOptions = {
     ipfs: undefined,
     targetClassName: 'ipfs-tag',
+    auto: false,
     timeout: 5000,
     debug: false
   }
@@ -46,21 +47,21 @@ class IpfsTag {
   async fetch(element = null) {
     switch(Boolean(element)) {
       case true:
-        await this._fetch(element)
+        await this._fetch(this.ipfs, element)
         break;
       case false:
         const elements = document.getElementsByClassName(this.targetClassName)
         for( let i = 0 ; i < elements.length ; i ++ ) {
-          await this._fetch(elements[i])
+          await this._fetch(this.ipfs, elements[i])
         }
         break;
     }
   }
 
-  async _fetch(element) {
+  async _fetch(ipfs, element) {
 
-    if (!this.ipfs) { this.debug('ipfs: ipfs is null'); return false; }
-    if (!this.ipfs.isOnline()) { this.debug('ipfs: ipfs is offline'); return false; }
+    if (!ipfs) { this.debug('ipfs: ipfs is null'); return false; }
+    if (!ipfs.isOnline()) { this.debug('ipfs: ipfs is offline'); return false; }
 
     const cid = CID.parse(element.dataset.cid);
     const media = mediatype.fromString(element.dataset.mediatype)
@@ -77,7 +78,7 @@ class IpfsTag {
      * @params https://github.com/ipfs/js-ipfs/blob/master/docs/core-api/DAG.md#ipfsdaggetcid-options
      * @returns https://ipld.io/docs/data-model/node/
      */
-    const data = await this.ipfs.dag.get(cid, { timeout: this.timeout });
+    const data = await ipfs.dag.get(cid, { timeout: this.timeout });
     const arrayBuffer = (data?.value?.Data instanceof Uint8Array) ? data.value.Data : null;
 
     const blob = new Blob([arrayBuffer], { type: media.asString() });
@@ -90,11 +91,11 @@ class IpfsTag {
         reader.onload = (event) => {
           switch(media.subtype) {
             case 'html':
-              element.innerHTML = this.replaceControlCharacters(event.target.result)
+              element.innerHTML = this.replaceControlCharacters(event.target.result);
               break;
             case 'plain':
             default:
-              element.innerText = this.escapeHtml(this.replaceControlCharacters(event.target.result))
+              element.innerText = this.escapeHtml(this.replaceControlCharacters(event.target.result));
               break;
           }
         }
@@ -107,8 +108,8 @@ class IpfsTag {
               element.src = event.target.result;
               break;
             case 'CANVAS':
-              const img = new Image()
-              img.src = event.target.result
+              const img = new Image();
+              img.src = event.target.result;
               element.getContext("2d").drawImage(img, 0, 0);
               break;
             default:
