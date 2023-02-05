@@ -33,9 +33,6 @@ function App() {
           </canvas>
         </div>
         <button onClick={async () => {
-          if (!ipfs) { console.debug('ipfs: ipfs is null'); return false; }
-          if (!ipfs.isOnline()) { console.debug('ipfs: ipfs is offline'); return false; }
-
           try {
             await ipfs_tag.fetch()
           } catch (e) {
