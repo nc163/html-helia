@@ -1,7 +1,8 @@
 import IpfsTag from 'ipfs-tag'
 
 import useIpfsFactory from './hooks/use-ipfs-factory'
-import logo from './logo.svg';
+import FileUploadMultiple from './components/FileUploadMultiple'
+import logo from './logo.png';
 import './App.css';
 
 function App() {
@@ -13,34 +14,28 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <div>
-          <spam className='ipfs-tag' data-cid='QmQzCQn4puG4qu8PVysxZmscmQ5vT1ZXpqo7f58Uh9QfyY' data-mediatype='text/html'></spam>
-          <spam className='ipfs-tag' data-cid='QmcZFY95TMnf57CuVaVPUaPyLiSsCWdacSxrLZYywqLDQS' data-mediatype='text/plan' data-encord='UTF-8'></spam>
+      </header>
+      {Boolean(ipfs) === false ? <p>IPFS is not ready.</p> : (
+      <div>
+        <h2>ipfs-tag example</h2>
+        <div id='example'>
+          <span className='ipfs-tag' data-cid='QmQzCQn4puG4qu8PVysxZmscmQ5vT1ZXpqo7f58Uh9QfyY' data-mediatype='text/html'></span>
+          <span className='ipfs-tag' data-cid='QmcZFY95TMnf57CuVaVPUaPyLiSsCWdacSxrLZYywqLDQS' data-mediatype='text/plan' data-encord='UTF-8'></span>
           <img  className='ipfs-tag' data-cid='QmQqzMTavQgT4f4T5v6PWBp7XNKtoPmC9jvn12WPT3gkSE' data-mediatype='image/png' width={100} height={100} alt={''}/>
           <canvas className='ipfs-tag' data-cid='QmQqzMTavQgT4f4T5v6PWBp7XNKtoPmC9jvn12WPT3gkSE' data-mediatype='image/png' width={100} height={100}>
             alt
           </canvas>
-        </div>
-        <button onClick={async () => {
+          <button onClick={async () => {
           try {
             await ipfs_tag.fetch()
           } catch (e) {
             console.error(e)
             return e
           }
-        }}> test </button>
-      </header>
+        }}> execution </button>
+        </div>
+        
+      </div>)}
     </div>
   );
 }

@@ -58,10 +58,22 @@ class IpfsTag {
         }
         break;
     }
+
+
+  }
+
+  DispatchEvent(element, success) {
+    try{
+
+    } catch(err) {
+    
+    } finally {
+      const event = new CustomEvent('ipfs-tag:attached', { element: element, success: success });
+      element.dispatchEvent(event);
+    }
   }
 
   async _fetch(ipfs, element) {
-
     const cid = CID.parse(element.dataset.cid);
     const media = mediatype.fromString(element.dataset.mediatype)
     const encord = element.dataset?.encord || null
@@ -94,12 +106,15 @@ class IpfsTag {
               element.innerText = this.escapeHtml(this.replaceControlCharacters(event.target.result));
               break;
             case 'html':
+              return false;
               element.innerHTML = this.replaceControlCharacters(event.target.result);
               break;
             case 'css':
+              return false;
               element.innerHTML = event.target.result;
               break;
             case 'javascript':
+              return false;
               element.innerHTML = event.target.result;
               break;
             default:
@@ -125,6 +140,7 @@ class IpfsTag {
         reader.readAsDataURL(blob);
         break;
       case 'audio':
+        return false;
         reader.addEventListener('load', (event) => {
           if(element.tagName === 'AUDIO') {
             element.src = event.target.result;
@@ -133,6 +149,7 @@ class IpfsTag {
         reader.readAsDataURL(blob);
         break;
       case 'video':
+        return false;
         reader.addEventListener('load', (event) => {
           if(element.tagName === 'VIDEO') {
               element.src = event.target.result;
@@ -141,7 +158,7 @@ class IpfsTag {
         reader.readAsDataURL(blob);
         break;
       default:
-        break;
+        return false;
     }
   }
 

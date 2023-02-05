@@ -1,10 +1,14 @@
 # ipfs-tag
 
-- [x] text
-- [x] image
+- [x] text/plan
+- [ ] text/html
+- [ ] text/javascript
+- [ ] text/css
+- [x] image/png
+- [ ] image/jpeg
 - [ ] audio
 - [ ] video
-- [ ] 優先度
+- [ ] callback
 
 ## 
 
