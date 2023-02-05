@@ -17,10 +17,10 @@ class IpfsTag {
   /**
    * 
    * @param {{
-   *  ipfs: IPFS
-   *  debug: Boolean
-   *  targetClassName: String
-   *  timeout: Number
+   *  ipfs: IPFS?
+   *  debug: Boolean?
+   *  targetClassName: String?
+   *  timeout: Number?
    * }} options 
    */
   constructor(options = {}) {
@@ -28,12 +28,11 @@ class IpfsTag {
 
     let { ipfs, targetClassName, timeout, debug } = Object.assign(IpfsTag.defaultOptions, options); 
 
-    if(ipfs === undefined) throw new Error(`ipfs-tag: Bad parameter.`);
     if(typeof targetClassName != 'string') throw new Error(`ipfs-tag: Bad parameter.`);
     if(typeof timeout != 'number') throw new Error(`ipfs-tag: Bad parameter.`);
     if(typeof debug != 'boolean') throw new Error(`ipfs-tag: Bad parameter.`);
 
-    this.ipfs = ipfs;
+    this.ipfs = ipfs || window.ipfs;
     this.targetClassName = targetClassName;
     this.timeout = timeout;
     this.debug = debug ? console.debug : () => { /* noop */ };
