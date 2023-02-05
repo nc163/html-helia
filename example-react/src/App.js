@@ -10,17 +10,6 @@ function App() {
   const { ipfs } = useIpfsFactory()
   const ipfs_tag = new IpfsTag({ debug: true })
 
-  useEffect(() => {
-    (async () => {
-      try {
-        await ipfs_tag.attach(ipfs, document)
-      } catch (e) {
-          console.error(e)
-          return e
-      }
-    })()
-  }, [ipfs]);
-
   return (
     <div className="App">
       <header className="App-header">
@@ -36,8 +25,24 @@ function App() {
         >
           Learn React
         </a>
-        <div className='ipfs-tag' data-type="text"  data-cid="QmT78zSuBmuS4z925WZfrqQ1qHaJ56DQaTfyMUF7F8ff5o"></div>
-        <div className='ipfs-tag' data-type="image" data-cid="QmUQzaHKA5qx1rnuj3mve9NzVGEjsmFqjXyhynoXcU1pvJ"></div>
+        <div>
+          <spam className='ipfstag' data-cid='QmQzCQn4puG4qu8PVysxZmscmQ5vT1ZXpqo7f58Uh9QfyY' data-mediatype='text/html'></spam>
+          <spam className='ipfstag' data-cid='QmcZFY95TMnf57CuVaVPUaPyLiSsCWdacSxrLZYywqLDQS' data-mediatype='text/plan' data-encord='UTF-8'></spam>
+          <img  className='ipfstag' data-cid='QmQqzMTavQgT4f4T5v6PWBp7XNKtoPmC9jvn12WPT3gkSE' data-mediatype='image/png' width={100} height={100} alt={''}/>
+          <canvas className='ipfstag' data-cid='QmQqzMTavQgT4f4T5v6PWBp7XNKtoPmC9jvn12WPT3gkSE' data-mediatype='image/png' width={100} height={100}>
+            alt
+          </canvas>
+        </div>
+        <button onClick={async () => {
+          if (!ipfs || !ipfs.isOnline()) { console.debug('ipfs-tag: ipfs is offline'); return false; }
+
+          try {
+            await ipfs_tag.fetch(ipfs)
+          } catch (e) {
+              console.error(e)
+              return e
+          }
+        }}> test </button>
       </header>
     </div>
   );
