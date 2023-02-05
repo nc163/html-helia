@@ -6,10 +6,9 @@ import mediatype from 'media-type'
  */
 class IpfsTag {
 
-  static targetClassName = 'ipfstag'
-
   static defaultOptions = {
-    targetClassName: 'ipfstag',
+    ipfs: null,
+    targetClassName: 'ipfs-tag',
     timeout: 5000,
     debug: false
   }
@@ -17,13 +16,16 @@ class IpfsTag {
   /**
    * 
    * @param {{
+   *  ipfs: IPFS
    *  debug: Boolean
+   *  targetClassName: String
+   *  timeout: Number
    * }} options 
    */
   constructor(options = {}) {
     if(typeof options != 'object') throw new Error("ipfs-tag: Bad parameter.");
 
-    let { debug, targetClassName, timeout } = Object.assign(IpfsTag.defaultOptions, options); 
+    let { ipfs, targetClassName, timeout, debug } = Object.assign(IpfsTag.defaultOptions, options); 
 
     if(typeof targetClassName != 'string') throw new Error("ipfs-tag: Bad parameter.");
     if(typeof timeout != 'number') throw new Error("ipfs-tag: Bad parameter.");
@@ -33,7 +35,10 @@ class IpfsTag {
     this.timeout = timeout
     this.debug = debug ? console.debug : () => { /* noop */ }
 
-    this.debug("ipfs-tag: debug mode is enabled")
+    this.debug(`##= ipfs-tag
+# targetClassName : ${targetClassName}
+# timeout : ${timeout}
+# debug : ${debug}`)
   }
 
   /**
@@ -47,7 +52,7 @@ class IpfsTag {
         await this._fetch(ipfs, element)
         break;
       case false:
-        const elements = document.getElementsByClassName(IpfsTag.targetClassName)
+        const elements = document.getElementsByClassName(this.targetClassName)
         for( let i = 0 ; i < elements.length ; i ++ ) {
           await this._fetch(ipfs, elements[i])
         }
@@ -56,6 +61,8 @@ class IpfsTag {
   }
 
   async _fetch(ipfs, element) {
+
+    this.debug(`##= ipfs-tag._fetch`)
 
     const cid = CID.parse(element.dataset.cid);
     const media = mediatype.fromString(element.dataset.mediatype)
@@ -73,6 +80,9 @@ class IpfsTag {
      * @returns https://ipld.io/docs/data-model/node/
      */
     const data = await ipfs.dag.get(cid, { timeout: this.timeout });
+
+    this.debug(`##= ipfs.dag.get`)
+
     const arrayBuffer = (data?.value?.Data instanceof Uint8Array) ? data.value.Data : null;
 
     const blob = new Blob([arrayBuffer], { type: media.asString() });
