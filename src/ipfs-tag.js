@@ -58,6 +58,10 @@ class IpfsTag {
   }
 
   async _fetch(element) {
+
+    if (!this.ipfs) { this.debug('ipfs: ipfs is null'); return false; }
+    if (!this.ipfs.isOnline()) { this.debug('ipfs: ipfs is offline'); return false; }
+
     const cid = CID.parse(element.dataset.cid);
     const media = mediatype.fromString(element.dataset.mediatype)
     const encord = element.dataset?.encord || null
