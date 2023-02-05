@@ -7,7 +7,7 @@ import mediatype from 'media-type'
 class IpfsTag {
 
   static defaultOptions = {
-    ipfs: null,
+    ipfs: undefined,
     targetClassName: 'ipfs-tag',
     timeout: 5000,
     debug: false
@@ -23,22 +23,19 @@ class IpfsTag {
    * }} options 
    */
   constructor(options = {}) {
-    if(typeof options != 'object') throw new Error("ipfs-tag: Bad parameter.");
+    if(typeof options != 'object') throw new Error(`ipfs-tag: Bad parameter.`);
 
     let { ipfs, targetClassName, timeout, debug } = Object.assign(IpfsTag.defaultOptions, options); 
 
-    if(typeof targetClassName != 'string') throw new Error("ipfs-tag: Bad parameter.");
-    if(typeof timeout != 'number') throw new Error("ipfs-tag: Bad parameter.");
-    if(typeof debug != 'boolean') throw new Error("ipfs-tag: Bad parameter.");
+    if(ipfs === undefined) throw new Error(`ipfs-tag: Bad parameter.`);
+    if(typeof targetClassName != 'string') throw new Error(`ipfs-tag: Bad parameter.`);
+    if(typeof timeout != 'number') throw new Error(`ipfs-tag: Bad parameter.`);
+    if(typeof debug != 'boolean') throw new Error(`ipfs-tag: Bad parameter.`);
 
-    this.targetClassName = targetClassName
-    this.timeout = timeout
-    this.debug = debug ? console.debug : () => { /* noop */ }
-
-    this.debug(`##= ipfs-tag
-# targetClassName : ${targetClassName}
-# timeout : ${timeout}
-# debug : ${debug}`)
+    this.ipfs = ipfs;
+    this.targetClassName = targetClassName;
+    this.timeout = timeout;
+    this.debug = debug ? console.debug : () => { /* noop */ };
   }
 
   /**
@@ -46,24 +43,21 @@ class IpfsTag {
    * @param {Document | HTMLElement} element 
    * @returns {Boolean}
    */
-  async fetch(ipfs, element = null) {
+  async fetch(element = null) {
     switch(Boolean(element)) {
       case true:
-        await this._fetch(ipfs, element)
+        await this._fetch(element)
         break;
       case false:
         const elements = document.getElementsByClassName(this.targetClassName)
         for( let i = 0 ; i < elements.length ; i ++ ) {
-          await this._fetch(ipfs, elements[i])
+          await this._fetch(elements[i])
         }
         break;
     }
   }
 
-  async _fetch(ipfs, element) {
-
-    this.debug(`##= ipfs-tag._fetch`)
-
+  async _fetch(element) {
     const cid = CID.parse(element.dataset.cid);
     const media = mediatype.fromString(element.dataset.mediatype)
     const encord = element.dataset?.encord || null
@@ -79,10 +73,7 @@ class IpfsTag {
      * @params https://github.com/ipfs/js-ipfs/blob/master/docs/core-api/DAG.md#ipfsdaggetcid-options
      * @returns https://ipld.io/docs/data-model/node/
      */
-    const data = await ipfs.dag.get(cid, { timeout: this.timeout });
-
-    this.debug(`##= ipfs.dag.get`)
-
+    const data = await this.ipfs.dag.get(cid, { timeout: this.timeout });
     const arrayBuffer = (data?.value?.Data instanceof Uint8Array) ? data.value.Data : null;
 
     const blob = new Blob([arrayBuffer], { type: media.asString() });

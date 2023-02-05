@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import IpfsTag from 'ipfs-tag'
 
 import useIpfsFactory from './hooks/use-ipfs-factory'
@@ -8,7 +7,7 @@ import './App.css';
 function App() {
 
   const { ipfs } = useIpfsFactory()
-  const ipfs_tag = new IpfsTag({ debug: true })
+  const ipfs_tag = new IpfsTag({ ipfs: ipfs, debug: true })
 
   return (
     <div className="App">
@@ -38,7 +37,7 @@ function App() {
           if (!ipfs.isOnline()) { console.debug('ipfs: ipfs is offline'); return false; }
 
           try {
-            await ipfs_tag.fetch(ipfs)
+            await ipfs_tag.fetch()
           } catch (e) {
             console.error(e)
             return e
