@@ -45,6 +45,10 @@ class IpfsTag {
    * @returns {Boolean}
    */
   async fetch(element = null) {
+
+    if (!this.ipfs) { this.debug('ipfs: ipfs is null'); return false; }
+    if (!this.ipfs.isOnline()) { this.debug('ipfs: ipfs is offline'); return false; }
+
     switch(Boolean(element)) {
       case true:
         await this._fetch(this.ipfs, element)
@@ -59,9 +63,6 @@ class IpfsTag {
   }
 
   async _fetch(ipfs, element) {
-
-    if (!ipfs) { this.debug('ipfs: ipfs is null'); return false; }
-    if (!ipfs.isOnline()) { this.debug('ipfs: ipfs is offline'); return false; }
 
     const cid = CID.parse(element.dataset.cid);
     const media = mediatype.fromString(element.dataset.mediatype)
