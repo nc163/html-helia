@@ -5,9 +5,6 @@
   "version": "0.0.2",
   "main": "src/index.js",
   "scripts": {},
-  "devDependencies": {
-    "ipfs-core": "^0.18.0"
-  },
   "bugs": {
     "url": "https://github.com/nc163/ipfs-tag/issues"
   },
@@ -20,6 +17,7 @@
     "dapps"
   ],
   "dependencies": {
+    "ipfs-core": "^0.18.0",
     "media-type": "^0.3.1",
     "multiformats": "^10.0.2"
   }

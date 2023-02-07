@@ -1,14 +1,30 @@
-import IpfsTag from 'ipfs-tag'
+import { useEffect, useRef } from 'react';
+import { IpfsTag } from 'ipfs-tag'
 
 import useIpfsFactory from './hooks/use-ipfs-factory'
-import FileUploadMultiple from './components/FileUploadMultiple'
 import logo from './logo.png';
 import './App.css';
 
 function App() {
 
+  const refFirstRef = useRef(true);
   const { ipfs } = useIpfsFactory()
-  const ipfs_tag = new IpfsTag({ ipfs: ipfs, debug: true })
+  const { display } = IpfsTag({ipfs})
+  
+  useEffect(() => {
+
+    
+  }, []);
+
+  useEffect(() => {
+    if (process.env.NODE_ENV === "development") {
+      if (refFirstRef.current) {
+        refFirstRef.current = false;
+        return;
+      }
+    }
+    // display()
+  }, []);
 
   return (
     <div className="App">
@@ -25,16 +41,15 @@ function App() {
           <canvas className='ipfs-tag' data-cid='QmQqzMTavQgT4f4T5v6PWBp7XNKtoPmC9jvn12WPT3gkSE' data-mediatype='image/png' width={100} height={100}>
             alt
           </canvas>
-          <button onClick={async () => {
+        </div>
+        <button onClick={async () => {
           try {
-            await ipfs_tag.fetch()
+            await display()
           } catch (e) {
             console.error(e)
             return e
           }
-        }}> execution </button>
-        </div>
-        
+        }}> get</button>
       </div>)}
     </div>
   );
