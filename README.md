@@ -2,8 +2,8 @@
 ipfs-tag is a library for fetch data from IPFS and displaying it on a page.
 
 ### TODOLIST
-- [x] text/plan
-- [ ] image/png
+- [x] text/plain
+- [x] image/*
 - [ ] text/css
 - [ ] audio/*
 - [ ] video/*
@@ -24,7 +24,7 @@ ipfs-tag is a library for fetch data from IPFS and displaying it on a page.
   </script>
 </head>
 <body>
-  <span class='ipfs-tag' data-cid="QmT78zSuBmuS4z925WZfrqQ1qHaJ56DQaTfyMUF7F8ff5o" data-mediatype="text/plan" ></span>
+  <span class='ipfs-tag' data-cid="QmT78zSuBmuS4z925WZfrqQ1qHaJ56DQaTfyMUF7F8ff5o" data-mediatype="text/plain" ></span>
   <img class='ipfs-tag' data-cid="QmQqzMTavQgT4f4T5v6PWBp7XNKtoPmC9jvn12WPT3gkSE" data-mediatype="image/png" />
   <audio class='ipfs-tag' data-cid="xxx" data-mediatype="audio/mp3"></audio>
   <video class='ipfs-tag' data-cid="xxx" data-mediatype="video/mpeg"></video>
@@ -38,9 +38,9 @@ import { IPFSElement } from '@ipfs-tag/react';
 export const Example = () => {
   return (
     <div>
-      <IPFSElement cid={cid} mediatype="text/plan" />
+      <IPFSElement cid={cid} mediatype="text/plain" />
       {/* or */}
-      <IPFSElement cid={"QmT78zSuBmuS4z925WZfrqQ1qHaJ56DQaTfyMUF7F8ff5o"} mediatype="text/plan" />
+      <IPFSElement cid={"QmT78zSuBmuS4z925WZfrqQ1qHaJ56DQaTfyMUF7F8ff5o"} mediatype="text/plain" />
     </div>
   )
 }

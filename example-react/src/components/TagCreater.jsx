@@ -3,7 +3,7 @@ import { createElement, useState } from 'react';
 function TagCreater(props) {
   const [tagName, setTagName] = useState('div');
   const [cid, setCid] = useState(null);
-  const [metadata, setMetadata] = useState('text/plan');
+  const [metadata, setMetadata] = useState('text/plain');
 
   const createHtmlTag = (props) => {
     props.onCreate(createElement(tagName, { "data-cid": cid, "data-metadata": metadata }))

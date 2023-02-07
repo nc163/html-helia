@@ -1,4 +1,3 @@
-import { useEffect, useRef } from 'react';
 import { IpfsTag } from 'ipfs-tag'
 
 import useIpfsFactory from './hooks/use-ipfs-factory'
@@ -7,24 +6,8 @@ import './App.css';
 
 function App() {
 
-  const refFirstRef = useRef(true);
   const { ipfs } = useIpfsFactory()
   const { display } = IpfsTag({ipfs})
-  
-  useEffect(() => {
-
-    
-  }, []);
-
-  useEffect(() => {
-    if (process.env.NODE_ENV === "development") {
-      if (refFirstRef.current) {
-        refFirstRef.current = false;
-        return;
-      }
-    }
-    // display()
-  }, []);
 
   return (
     <div className="App">
@@ -36,11 +19,14 @@ function App() {
         <h2>ipfs-tag example</h2>
         <div id='example'>
           <span className='ipfs-tag' data-cid='QmQzCQn4puG4qu8PVysxZmscmQ5vT1ZXpqo7f58Uh9QfyY' data-mediatype='text/html'></span>
-          <span className='ipfs-tag' data-cid='QmcZFY95TMnf57CuVaVPUaPyLiSsCWdacSxrLZYywqLDQS' data-mediatype='text/plan' data-encord='UTF-8'></span>
+          <span className='ipfs-tag' data-cid='QmcZFY95TMnf57CuVaVPUaPyLiSsCWdacSxrLZYywqLDQS' data-mediatype='text/plain' data-encord='UTF-8'></span>
           <img  className='ipfs-tag' data-cid='QmQqzMTavQgT4f4T5v6PWBp7XNKtoPmC9jvn12WPT3gkSE' data-mediatype='image/png' width={100} height={100} alt={''}/>
           <canvas className='ipfs-tag' data-cid='QmQqzMTavQgT4f4T5v6PWBp7XNKtoPmC9jvn12WPT3gkSE' data-mediatype='image/png' width={100} height={100}>
             alt
           </canvas>
+          <style className='ipfs-tag' data-cid='QmQqzMTavQgT4f4T5v6PWBp7XNKtoPmC9jvn12WPT3gkSE' data-mediatype='image/png'>
+
+          </style>
         </div>
         <button onClick={async () => {
           try {

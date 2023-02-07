@@ -17,7 +17,7 @@ export function createTextInsert({ element }) {
 
     reader.onload = (event) => {
       switch(media.subtype) {
-        case 'plan':
+        case 'plain':
           element.innerText = escapeHtml(replaceControlCharacters(event.target.result));
           break;
         case 'html':
