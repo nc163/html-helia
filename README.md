@@ -19,7 +19,7 @@ ipfs-tag is a library for fetch data from IPFS and displaying it on a page.
   <script src="https://cdn.jsdelivr.net/npm/ipfs/dist/index.min.js"></script>
   <script type="text/javascript" src="ipfs-tag.js"></script>
   <script type="text/javascript">
-    let { display } = ipfsTag();
+    const { display } = IpfsTag({ipfs})
     display()
   </script>
 </head>
