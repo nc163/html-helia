@@ -32,17 +32,4 @@ ipfs-tag is a library for fetch data from IPFS and displaying it on a page.
 ```
 
 ## example-react
-```javascript
-import { IPFSElement } from '@ipfs-tag/react';
-
-export const Example = () => {
-  return (
-    <div>
-      <IPFSElement cid={cid} mediatype="text/plain" />
-      {/* or */}
-      <IPFSElement cid={"QmT78zSuBmuS4z925WZfrqQ1qHaJ56DQaTfyMUF7F8ff5o"} mediatype="text/plain" />
-    </div>
-  )
-}
-
-```
+see example-react

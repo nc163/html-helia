@@ -2,7 +2,7 @@
   "name": "ipfs-tag",
   "description": "",
   "license": "MIT",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "src/index.js",
   "scripts": {},
   "bugs": {
