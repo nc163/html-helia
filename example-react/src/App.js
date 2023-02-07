@@ -24,6 +24,7 @@ function App() {
           <canvas className='ipfs-tag' data-cid='QmQqzMTavQgT4f4T5v6PWBp7XNKtoPmC9jvn12WPT3gkSE' data-mediatype='image/png' width={100} height={100}>
             alt
           </canvas>
+          <audio controls className='ipfs-tag' data-cid="xxxx" data-mediatype="audio/mp3"></audio>
         </div>
         <button onClick={async () => {
           try {
