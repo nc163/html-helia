@@ -13,6 +13,9 @@ ipfs-tag is a library for fetch data from IPFS and displaying it on a page.
 ## install
 `npm i ipfs-tag`
 
+## demo
+[**react demo**](https://nc163.github.io/ipfs-tag/react/)
+
 ## example
 ```html
   ...
