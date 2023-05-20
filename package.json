@@ -11,15 +11,12 @@
     "type": "git",
     "url": "http://github.com/nc163/ipfs-tag.git"
   },
-  "module": "esm/index.js",
+  "module": "src/index.ts",
   "type": "module",
   "scripts": {
     "build": "rimraf esm && tsc -p tsconfig.esm.json && webpack",
     "dev": "node main.js"
   },
-  "files": [
-    "esm"
-  ],
   "keywords": [
     "browser",
     "ipfs",
@@ -44,7 +41,6 @@
   },
   "workspaces": [
     "packages/react",
-    "packages/umd",
-    "packages/esm"
+    "packages/html"
   ]
 }
