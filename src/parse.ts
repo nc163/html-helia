@@ -1,19 +1,35 @@
-import { CID } from 'multiformats/cid'
-import { MediaType } from 'media-type';
+import type { IPFS } from 'ipfs-core'
+import { CID } from 'multiformats'
 
-function parse(element: HTMLIpfsTagElement): ParsedIPFSTagType | null {
+type IpfsTagParseProps = {
+  ipfs: IPFS;
+  cid: string | CID;
+  type: string;
+  subtype: string;
+  encord?: string;
+}
 
-  if( typeof element.dataset.cid !== 'string'
-   || typeof element.dataset.mediatype !== 'string') return null;
+function parse(cid: string | CID, type: string, subtype: string, encord?: string): ParsedIPFSTagType | null {
 
+  let _cid = cid
+  if (typeof cid === 'string') _cid = CID.parse(cid)
+  
   return {
-    cid: CID.parse(element.dataset.cid),
+    cid: cid,
     mediatype: {
-      type: MediaType.fromString(element.dataset.mediatype).type.toLowerCase(),
-      subtype: MediaType.fromString(element.dataset.mediatype).subtype.toLowerCase(),
+      type: type.toLowerCase(),
+      subtype: subtype.toLowerCase(),
     },
-    encord: element.dataset.encord || undefined
+    encord: encord || undefined
   };
+  // return {
+  //   cid: cid,
+  //   mediatype: {
+  //     type: MediaType.fromString(element.dataset.mediatype).type.toLowerCase(),
+  //     subtype: MediaType.fromString(element.dataset.mediatype).subtype.toLowerCase(),
+  //   },
+  //   encord: element.dataset.encord || undefined
+  // };
 }
 
 

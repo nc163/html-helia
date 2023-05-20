@@ -1,4 +1,8 @@
 import type { IPFS } from 'ipfs-core'
+// @ts-ignore
+import { MediaType } from 'media-type';
+// @ts-ignore
+import { CID } from 'multiformats'
 
 import parse from './parse'
 import fetch from './fetch'
@@ -11,8 +15,13 @@ import insert from './insert'
  * @returns 
  */
 const IPFSTag = async (ipfs: IPFS, element: HTMLIpfsTagElement) => {
-  
-  let params = parse(element)
+  if (element.dataset.cid !== "string") return false
+  let cid = CID.parse(element.dataset.cid)
+  let type = MediaType.fromString(element.dataset.mediatype).type.toLowerCase()
+  let subtype = MediaType.fromString(element.dataset.mediatype).subtype.toLowerCase()
+  let encord = element.dataset.encord
+
+  let params = parse(cid, type, subtype, encord)
 
   if (!params) return false
 
@@ -21,3 +30,4 @@ const IPFSTag = async (ipfs: IPFS, element: HTMLIpfsTagElement) => {
 }
 
 export default IPFSTag
+export { parse, fetch, insert }

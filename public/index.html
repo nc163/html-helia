@@ -5,37 +5,51 @@
     <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <title>test</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ipfs/0.66.0/index.min.js"></script>
-    <script defer="defer" src="umd/index.js"></script>
+    <script>
+      import IpfsTag from './bundle.js'
+      // globalThis.test = IpfsTag
+      // document.addEventListener('DOMContentLoaded', async () => {
+      //   window.node = await Ipfs.create({ repo: 'ipfs-' + Math.random() })
+
+      //   console.log(`Node status: ${window.node.isOnline() ? 'online' : 'offline'}`)
+
+      //   let ipfsTags = document.getElementsByClassName("ipfs-tag")
+      //   for (let i = 0; i < ipfsTags.length; i++) {
+      //     console.log(ipfsTags[i])
+      //     IpfsTag(window.node, ipfsTags[i])
+      //   }
+      // })
+    </script>
 </head>
 <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root">
       <h2>ipfs-tag example</h2>
       <div>
-        <span data-cid='QmcZFY95TMnf57CuVaVPUaPyLiSsCWdacSxrLZYywqLDQS' data-mediatype='text/plain' data-encord='UTF-8'></span>
+        <span class="ipfs-tag" data-cid='QmcZFY95TMnf57CuVaVPUaPyLiSsCWdacSxrLZYywqLDQS' data-mediatype='text/plain' data-encord='UTF-8'></span>
       </div>
       <div>
         <p>image</p>
-        <img data-cid='QmQqzMTavQgT4f4T5v6PWBp7XNKtoPmC9jvn12WPT3gkSE' data-mediatype='image/png' width=100 height=100 alt=""></img>
-        <canvas data-cid='QmQqzMTavQgT4f4T5v6PWBp7XNKtoPmC9jvn12WPT3gkSE' data-mediatype='image/png' width=100 height=100>
+        <img class="ipfs-tag" data-cid='QmQqzMTavQgT4f4T5v6PWBp7XNKtoPmC9jvn12WPT3gkSE' data-mediatype='image/png' width=100 height=100 alt=""></img>
+        <canvas class="ipfs-tag" data-cid='QmQqzMTavQgT4f4T5v6PWBp7XNKtoPmC9jvn12WPT3gkSE' data-mediatype='image/png' width=100 height=100>
           alt
         </canvas>
       </div>
       <div>
         <p>beep wav</p>
-        <audio controls data-cid="QmPcY4qe9vr3CA3HgXANaBVQEkWeJsBT4zGiffuJ2GKjCv" data-mediatype="audio/wav"></audio>
+        <audio class="ipfs-tag" controls data-cid="QmPcY4qe9vr3CA3HgXANaBVQEkWeJsBT4zGiffuJ2GKjCv" data-mediatype="audio/wav"></audio>
       </div>
       <div>
         <p>music(acc)</p>
-        <audio controls data-cid="QmUysYps3hyEvd4YpTFynWvyQp3sYkxcNzSC8ExeP3Eac6" data-mediatype="audio/acc"></audio>
+        <audio class="ipfs-tag" controls data-cid="QmUysYps3hyEvd4YpTFynWvyQp3sYkxcNzSC8ExeP3Eac6" data-mediatype="audio/acc"></audio>
       </div>
       <div>
         <p>music(ogg)</p>
-        <audio controls data-cid="QmaSrVYHfteF4Uzjd2BWewgLnQiSxfAhdtD5iuN8z1KyJo" data-mediatype="audio/ogg"></audio>
+        <audio class="ipfs-tag" controls data-cid="QmaSrVYHfteF4Uzjd2BWewgLnQiSxfAhdtD5iuN8z1KyJo" data-mediatype="audio/ogg"></audio>
       </div>
       <div>
         <p>video(mp4)</p>
-        <video controls data-cid="QmTca4A43f4kEvzTouvYTegtp6KobixRqweV12NrvwwtFP" data-mediatype="video/mp4"></video>
+        <video class="ipfs-tag" controls data-cid="QmTca4A43f4kEvzTouvYTegtp6KobixRqweV12NrvwwtFP" data-mediatype="video/mp4"></video>
       </div>
     </div>
 </body>
