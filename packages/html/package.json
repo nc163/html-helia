@@ -3,10 +3,13 @@
   "version": "1.0.0",
   "description": "",  
   "module": "src/index.ts",
+  "type": "module",
   "scripts": {
-    "tsc": "rimraf dist && tsc -p tsconfig.json",
     "build": "rimraf dist && tsc -p tsconfig.json && webpack",
     "dev": "node example/dev.js"
+  },
+  "dependencies": {
+    "@ipfs-tag/core": "^1.0.0"
   },
   "author": "",
   "license": "ISC"

@@ -2,10 +2,12 @@
   "name": "@ipfs-tag/core",
   "version": "1.0.0",
   "description": "",  
-  "module": "src/index.ts",
-  "typings": "types/index.d.ts",
+  "main": "dist/src/index.js",
+  "types": "dist/src/index.d.ts",
+  "type": "module",
+  "files": ["dist", "src"],
   "scripts": {
-    "tsc": "rimraf dist && tsc -p tsconfig.json"
+    "build": "rimraf dist && tsc -p tsconfig.json"
   },
   "dependencies": {
     "ipfs-core": "^0.18.0",

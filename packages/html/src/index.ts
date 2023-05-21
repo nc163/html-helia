@@ -3,5 +3,6 @@ import ipfs from "ipfs-core";
 
 window.addEventListener('load', () => {
   console.log('Window loaded');
+  console.log(IPFSTag)
 
 });

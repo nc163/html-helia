@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",  
   "scripts": {
-    "tsc": "rimraf esm && tsc -p tsconfig.html.json"
+    "tsc": "rimraf esm && tsc -p tsconfig.json"
   },
   "author": "",
   "license": "ISC"

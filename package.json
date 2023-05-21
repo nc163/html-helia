@@ -13,7 +13,11 @@
   },
   "type": "module",
   "scripts": {
-    "build": "rimraf esm && tsc -p tsconfig.esm.json && webpack"
+    "build": "npm run build:core && npm run build:type && npm run build:html && npm run build:react",
+    "build:core": "npm run build --prefix packages/core",
+    "build:type": "npm run build --prefix packages/type",
+    "build:html": "npm run build --prefix packages/html",
+    "build:react": "npm run build --prefix packages/react"
   },
   "keywords": [
     "browser",
