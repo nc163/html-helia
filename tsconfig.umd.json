@@ -1,9 +1,0 @@
-{
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "module": "umd",
-    "target": "es5",
-    "noImplicitAny": true,
-    "outDir": "./umd"
-  }
-}

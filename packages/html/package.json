@@ -1,0 +1,13 @@
+{
+  "name": "@ipfs-tag/html",
+  "version": "1.0.0",
+  "description": "",  
+  "module": "src/index.ts",
+  "scripts": {
+    "tsc": "rimraf dist && tsc -p tsconfig.json",
+    "build": "rimraf dist && tsc -p tsconfig.json && webpack",
+    "dev": "node example/dev.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

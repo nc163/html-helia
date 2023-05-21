@@ -2,6 +2,7 @@ import insertAudio from './insertAudio'
 import insertVideo from './insertVideo'
 import insertImage from './insertImage'
 import insertText from './insertText'
+import type { ParsedIPFSTagType, HTMLIpfsTagElement } from '@types'
 
 async function insert(element: HTMLIpfsTagElement, params: ParsedIPFSTagType, blob: Blob) {
   const reader = new FileReader();

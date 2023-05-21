@@ -1,7 +1,8 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.ts', // あなたのメインのtsファイルへのパス
+  entry: './src/index.ts',
+  devtool: 'source-map',
   module: {
     rules: [
       {
@@ -16,7 +17,7 @@ module.exports = {
   },
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'public'), // バンドル出力先のパス
+    path: path.resolve(__dirname, 'public'),
   },
   target: ['web'],
 };

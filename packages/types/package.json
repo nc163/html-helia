@@ -1,0 +1,10 @@
+{
+  "name": "@types/ipfs-tag",
+  "version": "1.0.0",
+  "description": "",  
+  "scripts": {
+    "tsc": "rimraf esm && tsc -p tsconfig.html.json"
+  },
+  "author": "",
+  "license": "ISC"
+}

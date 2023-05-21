@@ -1,3 +1,5 @@
+import type { ParsedIPFSTagType } from '@types'
+
 /**
  * 
  * @param {Blob} blob 

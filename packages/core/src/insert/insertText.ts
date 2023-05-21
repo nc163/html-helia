@@ -1,5 +1,5 @@
 import mediatype from 'media-type'
-
+import type { ParsedIPFSTagType } from '@types'
 /**
  * 
  * @param {IPFS} ipfs 

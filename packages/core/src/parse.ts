@@ -1,18 +1,11 @@
-import type { IPFS } from 'ipfs-core'
 import { CID } from 'multiformats'
+import type { ParsedIPFSTagType } from '@types'
 
-type IpfsTagParseProps = {
-  ipfs: IPFS;
-  cid: string | CID;
-  type: string;
-  subtype: string;
-  encord?: string;
-}
+function parse(cid: string, type: string, subtype: string, encord?: string): ParsedIPFSTagType {
 
-function parse(cid: string | CID, type: string, subtype: string, encord?: string): ParsedIPFSTagType | null {
-
-  let _cid = cid
-  if (typeof cid === 'string') _cid = CID.parse(cid)
+  // let _cid = cid
+  // if (typeof cid === 'string') _cid = CID.parse(cid)
+  // else _cid = cid
   
   return {
     cid: cid,

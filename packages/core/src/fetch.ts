@@ -1,4 +1,5 @@
 import { IPFS } from 'ipfs-core';
+import type { ParsedIPFSTagType } from '@types'
 
 /**
  * 

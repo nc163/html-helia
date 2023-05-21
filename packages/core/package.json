@@ -1,0 +1,17 @@
+{
+  "name": "@ipfs-tag/core",
+  "version": "1.0.0",
+  "description": "",  
+  "module": "src/index.ts",
+  "typings": "types/index.d.ts",
+  "scripts": {
+    "tsc": "rimraf dist && tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "ipfs-core": "^0.18.0",
+    "media-type": "^0.3.1",
+    "multiformats": "^10.0.3"
+  },
+  "author": "",
+  "license": "ISC"
+}
