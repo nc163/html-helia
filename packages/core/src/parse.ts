@@ -1,4 +1,4 @@
-import { CID } from 'multiformats'
+// import { CID } from 'multiformats'
 import type { ParsedIPFSTagType } from '@types'
 
 function parse(cid: string, type: string, subtype: string, encord?: string): ParsedIPFSTagType {
