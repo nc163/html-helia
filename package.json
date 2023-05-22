@@ -37,7 +37,7 @@
     "packages/react",
     "packages/html",
     "packages/types",
-    "examples/html",
-    "examples/react"
+    "examples/example-html",
+    "examples/example-react"
   ]
 }
