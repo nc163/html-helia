@@ -1,6 +1,4 @@
 .vscode
-example
-example-react
+examples
 tsconfig.json
 public
-main.js
