@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "outDir": "./dist",
+    "target": "es5",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "baseUrl": ".",
+    "paths": {
+      "@ipfs-tag/core": ["packages/core"],
+      "@ipfs-tag/html": ["packages/html"],
+      "@ipfs-tag/react": ["packages/react"],
+    }
+  },
+  "exclude": ["**/node_modules/**", "**/dist/**"],
+  "include": [
+    "packages/**/*", "examples/**/*",
+  ]
+}

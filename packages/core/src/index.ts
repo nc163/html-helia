@@ -1,6 +1,6 @@
 import type { IPFS } from 'ipfs-core'
 // @ts-ignore
-import { MediaType } from 'media-type';
+import MediaType from 'media-type';
 import type { HTMLIpfsTagElement } from '@types'
 import parse from './parse'
 import fetch from './fetch'

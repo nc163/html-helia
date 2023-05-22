@@ -1,4 +1,4 @@
-import mediatype from 'media-type'
+import MediaType from 'media-type';
 import type { ParsedIPFSTagType } from '@types'
 /**
  * 
@@ -6,7 +6,7 @@ import type { ParsedIPFSTagType } from '@types'
  */
 async function insertText(element: HTMLElement, params: ParsedIPFSTagType, blob: Blob, reader: FileReader) {
 
-  const media = mediatype.fromString(element.dataset.mediatype)
+  const media = MediaType.fromString(element.dataset.mediatype)
   const encord = element.dataset?.encord || null
 
   reader.onload = (event) => {

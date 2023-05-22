@@ -1,11 +1,12 @@
 {
-  "name": "@ipfs-tag/html",
+  "name": "@ipfs-tag/example-react",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "type": "module",
   "scripts": {
-    "build": "rimraf dist && tsc -p tsconfig.json",
+    "build": "rimraf dist && tsc -p tsconfig.json && webpack",
     "dev": "node example/dev.js"
   },
   "dependencies": {
