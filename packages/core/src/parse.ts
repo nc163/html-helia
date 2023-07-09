@@ -1,14 +1,10 @@
-// import { CID } from 'multiformats'
-import type { ParsedIPFSTagType } from '@types'
+import { CID } from 'multiformats'
+import type { IPFSTagFetchContextType } from '@types'
 
-function parse(cid: string, type: string, subtype: string, encord?: string): ParsedIPFSTagType {
+function parse(cid: string, type: string, subtype: string, encord?: string): IPFSTagFetchContextType {
 
-  // let _cid = cid
-  // if (typeof cid === 'string') _cid = CID.parse(cid)
-  // else _cid = cid
-  
   return {
-    cid: cid,
+    cid: CID.parse(cid),
     mediatype: {
       type: type.toLowerCase(),
       subtype: subtype.toLowerCase(),

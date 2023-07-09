@@ -35,7 +35,7 @@
   "workspaces": [
     "packages/core",
     "packages/react",
-    "packages/html",
+    "packages/react-ipfs-provider",
     "packages/types",
     "examples/example-html",
     "examples/example-react"

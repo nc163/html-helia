@@ -3,8 +3,8 @@ import type { CID } from 'multiformats'
 
 type HTMLIpfsTagElement = HTMLMediaElement | HTMLElement | HTMLImageElement
 
-interface ParsedIPFSTagType {
-  cid: string;
+interface IPFSTagFetchContextType {
+  cid: CID;
   mediatype: {
     type: string
     subtype: string

@@ -29,5 +29,8 @@
   "homepage": "https://github.com/nc163/ipfs-tag#readme",
   "private": false,
   "author": "nc163",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "@ipfs-tag/core": "^1.0.0"
+  }
 }

@@ -1,8 +1,10 @@
 import type { IPFS } from 'ipfs-core'
-import { MediaType } from 'media-type';
-import { CID } from 'multiformats/cid'
+import { fetch } from '@ipfs-tag/core'
+import type { CID } from 'multiformats/cid'
 
-import { parse } from "ipfs-tag"
+import { useEffect, useState } from 'react'
+
+import { parse } from "@ipfs-tag/core"
 
 type IpfsTagProps = {
   ipfs: IPFS;
@@ -18,10 +20,9 @@ type IpfsTagProps = {
  * e.g) <ipfstag ipfs cid="QmT78zSuBmuS4z925WZfrqQ1qHaJ56DQaTfyMUF7F8ff5o" type="text/plain" ></ipfstag>
  * @returns 
  */
-function ipfstag({ ipfs, cid, type, subtype, encord }: IpfsTagProps) {
+function IpfsTag(ipfs: IPFS, context: {cid: string, type: string, subtype: string, encord: string}) {
 
-  let params = parse(ipfs, cid, type, subtype, encord)
-
+  fetch(ipfs, {  }).then((res) => {
 
   return <>
   </>

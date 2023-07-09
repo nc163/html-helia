@@ -1,10 +1,14 @@
 import type { IPFS } from 'ipfs-core'
+import isIPFS from 'is-ipfs'
 // @ts-ignore
 import MediaType from 'media-type';
-import type { HTMLIpfsTagElement } from '@types'
+
 import parse from './parse'
 import fetch from './fetch'
 import insert from './insert'
+
+import type { HTMLIpfsTagElement } from '@types'
+import type { IPFSTagFetchContextType } from '@types'
 
 /**
  * 
@@ -19,7 +23,7 @@ const IPFSTag = async (ipfs: IPFS, element: HTMLIpfsTagElement) => {
   let subtype = MediaType.fromString(element.dataset.mediatype).subtype.toLowerCase()
   let encord = element.dataset.encord
 
-  let params = parse(cid, type, subtype, encord)
+  let params: IPFSTagFetchContextType = parse(cid, type, subtype, encord)
 
   if (!params) return false
 

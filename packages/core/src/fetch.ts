@@ -1,5 +1,5 @@
 import { IPFS } from 'ipfs-core';
-import type { ParsedIPFSTagType } from '@types'
+import type { IPFSTagFetchContextType } from '@types'
 
 /**
  * 
@@ -7,7 +7,7 @@ import type { ParsedIPFSTagType } from '@types'
  * @param {*} this.element 
  * @returns {ArrayBuffer} content
  */
-async function fetch(ipfs: IPFS, context: ParsedIPFSTagType): Promise<Blob> {
+async function fetch(ipfs: IPFS, context: IPFSTagFetchContextType): Promise<Blob> {
 
   /**
    * ipfs.cat
@@ -15,6 +15,7 @@ async function fetch(ipfs: IPFS, context: ParsedIPFSTagType): Promise<Blob> {
    * https://discuss.ipfs.tech/t/how-to-ipfs-dag-get-the-image-in-browser/15938/3
    */
   const content = [];
+
   for await (const chunk of ipfs.cat(context.cid)) {
     content.push(chunk);
   }
