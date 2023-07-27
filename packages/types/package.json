@@ -1,11 +1,11 @@
 {
-  "name": "@types/ipfs-tag",
+  "name": "@types/html-ipfs",
   "version": "1.0.0",
   "description": "",
-  "main": "index.d.ts",
-  "types": "index.d.ts",
+  "main": "lib/index.d.ts",
+  "types": "lib/index.d.ts",
   "files": [
-    "index.d.ts"
+    "lib/*.d.ts"
   ],
   "scripts": {
     "tsc": "rimraf esm && tsc -p tsconfig.json"

@@ -1,24 +1,22 @@
 {
-  "name": "ipfs-tag",
-  "description": "ipfs-tag is a library for fetch data from IPFS and displaying it on a web page.",
+  "name": "html-ipfs",
+  "description": "html-ipfs is a library for fetch data from IPFS and displaying it on a web page.",
   "version": "0.0.7",
-  "homepage": "https://github.com/nc163/ipfs-tag",
+  "homepage": "https://github.com/nc163/html-ipfs",
   "bugs": {
-    "url": "https://github.com/nc163/ipfs-tag/issues"
+    "url": "https://github.com/nc163/html-ipfs/issues"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "http://github.com/nc163/ipfs-tag.git"
+    "url": "http://github.com/nc163/html-ipfs.git"
   },
   "types": "dist/",
   "type": "module",
   "scripts": {
-    "build": "rimraf dist && tsc -p tsconfig.json",
+    "build": "npm run build:core && npm run build:html-ipfs-element",
     "build:core": "npm run build --prefix packages/core",
-    "build:type": "npm run build --prefix packages/type",
-    "build:html": "npm run build --prefix packages/html",
-    "build:react": "npm run build --prefix packages/react"
+    "build:html-ipfs-element": "npm run build --prefix packages/html-ipfs-element"
   },
   "keywords": [
     "browser",
@@ -40,8 +38,6 @@
   "workspaces": [
     "packages/core",
     "packages/html-ipfs-element",
-    "packages/react",
-    "packages/react-ipfs-provider",
     "packages/types"
   ]
 }

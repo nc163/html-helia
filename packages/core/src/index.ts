@@ -5,7 +5,7 @@ import { insertContent } from './insertContent'
 
 import type { UnixFS } from "@helia/unixfs";
 
-import type { HTMLIpfsTagElement } from 'ipfs-tag'
+import type { HTMLIpfsTagElement } from 'html-ipfs'
 
 /**
  * 
@@ -13,7 +13,7 @@ import type { HTMLIpfsTagElement } from 'ipfs-tag'
  * @param options Options
  * @returns 
  */
-const IPFSTag = async (fs: UnixFS, element: HTMLIpfsTagElement) => {
+const HTMLIpfs = async (fs: UnixFS, element: HTMLIpfsTagElement) => {
   if (element.dataset.cid !== "string") return false
 
   if(typeof element.dataset.mediatype !== "string") return false
@@ -31,5 +31,5 @@ const IPFSTag = async (fs: UnixFS, element: HTMLIpfsTagElement) => {
   insertContent(element, mediatype, content)
 }
 
-export default IPFSTag
+export default HTMLIpfs
 export { fetchBlob, decodeBlob, insertContent }

@@ -4,7 +4,7 @@ import { insertVideo } from './insertVideo'
 import { insertImage } from './insertImage'
 import { insertText } from './insertText'
 
-import type { HTMLIpfsTagElement, IPFSTagDecodeContentType } from 'ipfs-tag'
+import type { HTMLIpfsTagElement, IPFSTagDecodeContentType } from 'html-ipfs'
 
 export function insertContent(element: HTMLIpfsTagElement, mediaType: MediaType, content: IPFSTagDecodeContentType) {
   switch(mediaType.type) {

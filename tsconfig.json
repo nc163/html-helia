@@ -10,13 +10,16 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
-      "@ipfs-tag/core": ["packages/core"],
-      "@ipfs-tag/html": ["packages/html"],
-      "@ipfs-tag/react": ["packages/react"],
+      "@types/html-ipfs": ["packages/types"],
+      "@html-ipfs/core": ["packages/core"],
+      "@html-ipfs/html": ["packages/html"],
     }
   },
-  "exclude": ["**/node_modules/**", "**/dist/**"],
+  "exclude": [
+    "**/node_modules/**",
+    "**/dist/**"
+  ],
   "include": [
-    "packages/**/*", "examples/**/*",
+    "packages/**/*"
   ]
 }

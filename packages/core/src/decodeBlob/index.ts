@@ -1,6 +1,6 @@
 import type { MediaType } from 'media-typer'
 
-import type { IPFSTagDecodeContentType } from 'ipfs-tag'
+import type { IPFSTagDecodeContentType } from 'html-ipfs'
 
 export function decodeBlob(blob: Blob, mediaType: MediaType): Promise<IPFSTagDecodeContentType> {
   return new Promise((resolve, reject) => {
