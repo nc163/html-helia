@@ -1,9 +1,17 @@
 {
   "name": "@types/ipfs-tag",
   "version": "1.0.0",
-  "description": "",  
+  "description": "",
+  "main": "index.d.ts",
+  "types": "index.d.ts",
+  "files": [
+    "index.d.ts"
+  ],
   "scripts": {
     "tsc": "rimraf esm && tsc -p tsconfig.json"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.4"
   },
   "author": "",
   "license": "ISC"

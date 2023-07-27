@@ -1,14 +1,11 @@
-import type { IPFS } from 'ipfs-core'
-import isIPFS from 'is-ipfs'
-// @ts-ignore
-import MediaType from 'media-type';
+import MediaType from 'media-typer'
+import { fetchBlob } from './fetchBlob'
+import { decodeBlob } from './decodeBlob'
+import { insertContent } from './insertContent'
 
-import parse from './parse'
-import fetch from './fetch'
-import insert from './insert'
+import type { UnixFS } from "@helia/unixfs";
 
-import type { HTMLIpfsTagElement } from '@types'
-import type { IPFSTagFetchContextType } from '@types'
+import type { HTMLIpfsTagElement } from 'ipfs-tag'
 
 /**
  * 
@@ -16,20 +13,23 @@ import type { IPFSTagFetchContextType } from '@types'
  * @param options Options
  * @returns 
  */
-const IPFSTag = async (ipfs: IPFS, element: HTMLIpfsTagElement) => {
+const IPFSTag = async (fs: UnixFS, element: HTMLIpfsTagElement) => {
   if (element.dataset.cid !== "string") return false
-  let cid = element.dataset.cid
-  let type = MediaType.fromString(element.dataset.mediatype).type.toLowerCase()
-  let subtype = MediaType.fromString(element.dataset.mediatype).subtype.toLowerCase()
-  let encord = element.dataset.encord
 
-  let params: IPFSTagFetchContextType = parse(cid, type, subtype, encord)
+  if(typeof element.dataset.mediatype !== "string") return false
 
-  if (!params) return false
+  let cid: string = element.dataset.cid
+  let mediatype = MediaType.parse(element.dataset.mediatype)
+  let type = mediatype.type
 
-  let blob = await fetch(ipfs, params)
-  insert(element, params, blob)
+
+  let blob = await fetchBlob(fs, cid, type)
+  
+  let content = await decodeBlob(blob, mediatype)
+  if(content == null) return false;
+
+  insertContent(element, mediatype, content)
 }
 
 export default IPFSTag
-export { parse, fetch, insert }
+export { fetchBlob, decodeBlob, insertContent }

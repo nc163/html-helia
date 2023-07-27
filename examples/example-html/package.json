@@ -2,22 +2,38 @@
   "name": "@ipfs-tag/example-html",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "build": "rimraf public/js && tsc -p tsconfig.json && webpack",
-    "dev": "node example/dev.js"
+    "build": "rimraf public/js/bundle.js && browserify -p [ esmify ] src/index.js > public/js/bundle.js  ",
+    "dev": "node run.js"
   },
   "dependencies": {
-    "@types/express": "^4.17.17",
-    "@types/node": "^18.16.3",
-    "@ipfs-tag/html": "^1.0.0",
+    "@helia/unixfs": "^1.4.0",
+    "@ipfs-tag/core": "file:../../packages/core"
+  },
+  "devDependencies": {
+    "browserify": "^17.0.0",
+    "esmify": "^2.1.1",
     "express": "^4.18.2",
+    "node-loader": "^2.0.0",
+    "resolve": "^1.22.2",
     "webpack": "^5.83.1",
     "webpack-cli": "^5.1.1"
   },
+  "browserslist": {
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ],
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ]
+  },
   "private": true,
-  "author": "",
+  "author": "nc163",
   "license": "ISC"
 }
