@@ -1,6 +1,6 @@
 import path from 'node:path';
 import {resolve as pathResolve} from 'path';
-import browserify from 'browserify';
+import Browserify from 'browserify';
 import esmify from 'esmify';
 
 function resolveDependency(id, parent) {
@@ -19,7 +19,7 @@ function resolveDependency(id, parent) {
   }
 }
 
-const b = browserify({
+const browserify = Browserify({
   entries: './src/index.js',
   plugin: [ esmify ],
   paths: [
@@ -29,6 +29,4 @@ const b = browserify({
   ],
 });
 
-// b.require(resolveDependency); // remove this line
-
-b.bundle().pipe(process.stdout);
+browserify.bundle().pipe(process.stdout);

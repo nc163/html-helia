@@ -22,11 +22,11 @@ const HTMLIpfs = async (fs: UnixFS, element: HTMLIpfsTagElement) => {
   let mediatype = MediaType.parse(element.dataset.mediatype)
   let type = mediatype.type
 
-
   let blob = await fetchBlob(fs, cid, type)
   
   let content = await decodeBlob(blob, mediatype)
-  if(content == null) return false;
+
+  if(content == null) throw new Error("decode error");
 
   insertContent(element, mediatype, content)
 }
