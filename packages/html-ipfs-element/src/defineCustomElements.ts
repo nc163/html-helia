@@ -1,4 +1,4 @@
-import { create } from 'ipfs-core'
+// import { create } from 'ipfs-core'
 
 import HTMLIPFSConfigElement from './HTMLIPFSConfigElement';
 import HTMLIPFSElement from './HTMLIPFSElement';
@@ -10,6 +10,6 @@ export default function defineCustomElements() {
 
   (async () => {
     let options = {}
-    HTMLIPFSConfigElement.ipfsInstance = await create(options);
+    // HTMLIPFSConfigElement.ipfsInstance = await create(options);
   })();
 }

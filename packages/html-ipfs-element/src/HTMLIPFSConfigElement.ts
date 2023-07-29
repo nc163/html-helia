@@ -1,4 +1,4 @@
-import type { IPFS } from 'ipfs-core';
+// import type { IPFS } from 'ipfs-core';
 
 export default class HTMLIPFSConfigElement extends HTMLElement {
 

@@ -17,11 +17,9 @@ export function decodeBlob(blob: Blob, mediaType: MediaType): Promise<IPFSTagDec
 
               switch (mediaType.type) {
                   case 'text':
-                      // テキスト形式のデータ
                       resolve(data);
                       break;
                   case 'image':
-                      // 画像データ
                       let img = new Image();
                       img.onload = function () {
                           resolve(img);
@@ -30,7 +28,6 @@ export function decodeBlob(blob: Blob, mediaType: MediaType): Promise<IPFSTagDec
                       break;
                   case 'audio':
                   case 'video':
-                      // オーディオまたはビデオデータ
                       let media = new Audio();
                       media.src = URL.createObjectURL(blob);
                       media.oncanplaythrough = function () {

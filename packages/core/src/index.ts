@@ -1,3 +1,4 @@
+import * as isIPFS from 'is-ipfs'
 import MediaType from 'media-typer'
 import { fetchBlob } from './fetchBlob'
 import { decodeBlob } from './decodeBlob'
@@ -15,11 +16,12 @@ import type { HTMLIpfsTagElement } from 'html-ipfs'
  */
 const HTMLIpfs = async (fs: UnixFS, element: HTMLIpfsTagElement) => {
   if (element.dataset.cid !== "string") return false
-
-  if(typeof element.dataset.mediatype !== "string") return false
-
+  if (isIPFS.cid(element.dataset.cid) === false) return false
   let cid: string = element.dataset.cid
+  
+  if(typeof element.dataset.mediatype !== "string") return false
   let mediatype = MediaType.parse(element.dataset.mediatype)
+  
   let type = mediatype.type
 
   let blob = await fetchBlob(fs, cid, type)

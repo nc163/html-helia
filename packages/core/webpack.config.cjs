@@ -53,7 +53,7 @@ module.exports = {
   // },
   output: {
     filename: 'bundle.js',
-    path: path.resolve(__dirname, 'bundle'),
+    path: path.resolve(__dirname, 'example/public/js'),
   },
   optimization: {
     minimize: false

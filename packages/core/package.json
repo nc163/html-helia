@@ -9,13 +9,15 @@
     "src"
   ],
   "scripts": {
-    "server": "npm run build npm run build-example",
     "build": "rimraf dist && tsc -p tsconfig.json",
-    "build-example": "rimraf public/js && webpack",
-    "build-example2": "rimraf example/public/js/bundle.js && browserify -p [ esmify ] dist/*.js > example/public/js/bundle.js && node example/run.js"
+    "server": "npm run build && npm run build-example-webpack",
+    "build-example-webpack": "rimraf example/public/js/bundle.js && webpack",
+    "build-example-browserify": "rimraf example/public/js/bundle.js && browserify -p [ esmify ] dist/*.js > example/public/js/bundle.js && node example/run.js",
+    "test": "jest"
   },
   "dependencies": {
     "@helia/unixfs": "^1.4.0",
+    "is-ipfs": "^8.0.1",
     "media-typer": "^1.1.0"
   },
   "devDependencies": {
