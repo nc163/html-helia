@@ -1,3 +1,4 @@
+// import { HTMLMediaElement, HTMLVideoElement} from "@types"
 /**
  * 
  */

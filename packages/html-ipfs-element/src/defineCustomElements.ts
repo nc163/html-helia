@@ -1,8 +1,7 @@
-// import { create } from 'ipfs-core'
-
 import HTMLIPFSConfigElement from './HTMLIPFSConfigElement';
 import HTMLIPFSElement from './HTMLIPFSElement';
 
+//
 export default function defineCustomElements() {
   let customElementRegistry = window.customElements;
   customElementRegistry.define('ipfs-tag', HTMLIPFSElement);

@@ -1,28 +1,62 @@
-import type { CID } from 'multiformats'
+import { CID } from 'multiformats/cid'
 
 import HTMLIPFSConfigElement from './HTMLIPFSConfigElement';
 
-export default class HTMLIPFSElement extends HTMLIPFSConfigElement {
+//
+export default class HTMLIPFSElement extends HTMLElement {
 
-  cids: CID[] = [];
+  // 監視する属性 - attributeChangedCallback が呼ばれる
+  static get observedAttributes() {
+    return ['cid', 'mediatype'];
+  }
 
   constructor() {
     super(); 
   }
 
   connectedCallback() {
-    const cid = this.getAttribute('cid');
-    if (!cid) {
+    console.debug('HTMLIPFSElement connectedCallback')
+    this.ifNeedCallCidAttributeChangedCallback();
+  }
+
+  attributeChangedCallback(name: string | number, oldValue: string, newValue: string) {
+    console.debug('HTMLIPFSElement attributeChangedCallback')
+    if (name === 'cid' && newValue) {
+      this.ifNeedCallCidAttributeChangedCallback();
+    }
+  }
+
+  // attributeの cid が設定されたら parse して変数を設定する
+  ifNeedCallCidAttributeChangedCallback() {
+    const cid_attr = this.getAttribute('cid');
+    if (!cid_attr) {
       console.debug('Waiting for cid');
       return
     }
-    super.fetchBlob(cid, "");
+
+    try {
+      const cid = CID.parse(cid_attr);
+      this.cidAttributeChangedCallback(cid)
+    } catch (err) {
+      console.error(err)
+    }
   }
 
-  attributeChangedCallback(name: string | number, oldValue: string | number, newValue: string | number) {
-    console.debug('HTMLIPFSElement attributeChangedCallback')
-    if (name === 'cid' && typeof newValue === 'string') {
-      super.fetchBlob(newValue, "");
+  // cid が設定されたら呼ばれる
+  cidAttributeChangedCallback(cid: CID) {
+    throw new Error('need override cidAttributeChangedCallback')
+  }
+
+  // 
+  async fetchBlob(cid: CID, mediatype: string): Promise<Blob | null>  {
+    const unixFs = HTMLIPFSConfigElement.unixFs;
+    if(unixFs === null) return null;
+
+    const content = [];
+    for await (const chunk of unixFs.cat(cid)) {
+      content.push(chunk);
     }
+  
+    return new Blob(content, { type: mediatype });
   }
 }

@@ -14,7 +14,9 @@
   "types": "dist/",
   "type": "module",
   "scripts": {
-    "build": "npm run build:core && npm run build:html-ipfs-element",
+    "build": "npm run build:core",
+    "test": "npm run test:core",
+    "test:core": "npm run test --prefix packages/core",
     "build:core": "npm run build --prefix packages/core",
     "build:html-ipfs-element": "npm run build --prefix packages/html-ipfs-element"
   },
@@ -26,18 +28,10 @@
   "devDependencies": {
     "@types/jest": "^29.5.3",
     "@types/node": "^18.16.3",
-    "browserify": "^17.0.0",
     "esmify": "^2.1.1",
-    "jest": "^29.6.1",
-    "rimraf": "^5.0.0",
-    "ts-jest": "^29.1.1",
-    "ts-loader": "^9.4.2",
-    "tslib": "^2.5.0",
-    "typescript": "^5.0.4"
+    "rimraf": "^5.0.0"
   },
   "workspaces": [
-    "packages/core",
-    "packages/html-ipfs-element",
-    "packages/types"
+    "packages/*"
   ]
 }

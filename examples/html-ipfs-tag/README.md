@@ -32,6 +32,3 @@
   <video controls class='ipfs-tag' data-cid="xxx" data-mediatype="video/mpeg"></video>
   ...
 ```
-
-## example-react
-see example-react

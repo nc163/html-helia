@@ -1,17 +1,19 @@
-// import type { IPFS } from 'ipfs-core';
+import type { UnixFS } from '@helia/unixfs'
+import type { CID } from 'multiformats/cid'
 
+//
 export default class HTMLIPFSConfigElement extends HTMLElement {
 
-  static ipfsInstance: IPFS | null = null;
+  static unixFs: UnixFS | null = null;
 
   constructor() {
     super(); 
   }
 
-  async fetchBlob(cid: string, mediatype: string): Promise<Blob | null>  {
+  async fetchBlob(cid: CID, mediatype: string): Promise<Blob | null>  {
 
-    const ipfs = HTMLIPFSConfigElement.ipfsInstance;
-    if(ipfs === null) return null;
+    const unixFs = HTMLIPFSConfigElement.unixFs;
+    if(unixFs === null) return null;
 
     /**
      * ipfs.cat
@@ -20,14 +22,14 @@ export default class HTMLIPFSConfigElement extends HTMLElement {
      */
     const content = [];
 
-    for await (const chunk of ipfs.cat(cid)) {
+    for await (const chunk of unixFs.cat(cid)) {
       content.push(chunk);
     }
   
     return new Blob(content, { type: mediatype });
   }
 
-  getIPFSInstance(): IPFS | null {
-    return HTMLIPFSConfigElement.ipfsInstance;
+  getIPFSInstance(): UnixFS | null {
+    return HTMLIPFSConfigElement.unixFs;
   }
 }

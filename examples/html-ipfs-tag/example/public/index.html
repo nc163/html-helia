@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>test</title>
+    <script src='./js/bundle.js'></script>
+    <script>
+      window.yourFunction();
+    </script>
+</head>
+<body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root">
+      <h2>ipfs-tag example</h2>
+      <div>
+        <span class="ipfs-tag" data-cid='QmcZFY95TMnf57CuVaVPUaPyLiSsCWdacSxrLZYywqLDQS' data-mediatype='text/plain' data-encord='UTF-8'></span>
+      </div>
+      <div>
+        <p>image</p>
+        <img class="ipfs-tag" data-cid='QmQqzMTavQgT4f4T5v6PWBp7XNKtoPmC9jvn12WPT3gkSE' data-mediatype='image/png' width=100 height=100 alt=""></img>
+        <canvas class="ipfs-tag" data-cid='QmQqzMTavQgT4f4T5v6PWBp7XNKtoPmC9jvn12WPT3gkSE' data-mediatype='image/png' width=100 height=100>
+          alt
+        </canvas>
+      </div>
+      <div>
+        <p>beep wav</p>
+        <audio class="ipfs-tag" controls data-cid="QmPcY4qe9vr3CA3HgXANaBVQEkWeJsBT4zGiffuJ2GKjCv" data-mediatype="audio/wav"></audio>
+      </div>
+      <div>
+        <p>music(acc)</p>
+        <audio class="ipfs-tag" controls data-cid="QmUysYps3hyEvd4YpTFynWvyQp3sYkxcNzSC8ExeP3Eac6" data-mediatype="audio/acc"></audio>
+      </div>
+      <div>
+        <p>music(ogg)</p>
+        <audio class="ipfs-tag" controls data-cid="QmaSrVYHfteF4Uzjd2BWewgLnQiSxfAhdtD5iuN8z1KyJo" data-mediatype="audio/ogg"></audio>
+      </div>
+      <div>
+        <p>video(mp4)</p>
+        <video class="ipfs-tag" controls data-cid="QmTca4A43f4kEvzTouvYTegtp6KobixRqweV12NrvwwtFP" data-mediatype="video/mp4"></video>
+      </div>
+    </div>
+</body>
+</html>

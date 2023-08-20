@@ -2,24 +2,22 @@
   "compilerOptions": {
     "declaration": true,
     "outDir": "./dist",
-    "target": "es5",
-    "module": "commonjs",
+    "paths": {
+      "@html-ipfs/core": ["packages/core"],
+      "@html-ipfs/html-ipfs-tag": ["packages/html-ipfs-tag"],
+      "@html-ipfs/html-ipfs-element": ["packages/html-ipfs-element"],
+      "*": ["node_modules/*"],
+    },
+    "moduleResolution": "node",
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "forceConsistentCasingInFileNames": true,
-    "baseUrl": ".",
-    "paths": {
-      "@types/html-ipfs": ["packages/types"],
-      "@html-ipfs/core": ["packages/core"],
-      "@html-ipfs/html": ["packages/html"],
-    }
+    "forceConsistentCasingInFileNames": true
   },
   "exclude": [
-    "**/node_modules/**",
-    "**/dist/**"
+    "node_modules",
+    "dist"
   ],
-  "include": [
-    "packages/**/*"
+  "plugins": [
   ]
 }
