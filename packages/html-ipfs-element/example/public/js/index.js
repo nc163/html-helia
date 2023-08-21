@@ -1429,10 +1429,22 @@ class HTMLIPFSElement extends HTMLElement {
 }
 
 //
+class HTMLIPFSImageElement extends HTMLIPFSElement {
+    constructor() {
+        super();
+    }
+    // cid が設定されたら呼ばれる
+    cidAttributeChangedCallback(cid) {
+        console.log("call!!!");
+    }
+}
+
+//
 function defineCustomElements() {
     let customElementRegistry = window.customElements;
-    customElementRegistry.define('ipfs-tag', HTMLIPFSElement);
-    customElementRegistry.define('ipfs-tag-config', HTMLIPFSConfigElement);
+    customElementRegistry.define('ipfs-config', HTMLIPFSConfigElement);
+    customElementRegistry.define('ipfs-element', HTMLIPFSElement);
+    customElementRegistry.define('ipfs-image', HTMLIPFSImageElement);
     (async () => {
         // HTMLIPFSConfigElement.ipfsInstance = await create(options);
     })();
@@ -1440,4 +1452,4 @@ function defineCustomElements() {
 
 defineCustomElements();
 
-export { HTMLIPFSConfigElement, HTMLIPFSElement };
+export { HTMLIPFSConfigElement, HTMLIPFSElement, HTMLIPFSImageElement };

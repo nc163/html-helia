@@ -1,6 +1,6 @@
 import type { CID } from 'multiformats'
 
-import HTMLIPFSElement from './HTMLIPFSElement';
+import { HTMLIPFSElement } from './';
 
 //
 export default class HTMLIPFSImageElement extends HTMLIPFSElement {
