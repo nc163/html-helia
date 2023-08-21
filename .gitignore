@@ -2,11 +2,9 @@
 .DS_Store
 .eslintcache
 
-cache
-tmp
 coverage
 **/dist/
 **/node_modules/
-tsconfig.tsbuildinfo
+**/example/public/js/index.js
 
 .ipfs
