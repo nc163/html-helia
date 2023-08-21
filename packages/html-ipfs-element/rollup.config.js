@@ -1,4 +1,5 @@
 import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
 
 export default {
   input: 'dist/index.js',
@@ -8,7 +9,11 @@ export default {
     format: 'esm',
     inlineDynamicImports: true
   },
-  plugins: [resolve({
-    /* */
-  })],
+  plugins: [
+    resolve({
+      preferBuiltins: false, // https://github.com/sveltejs/sapper/issues/755
+      mainFields: ['browser']
+    }),
+    commonjs()
+  ],
 };

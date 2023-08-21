@@ -12,16 +12,14 @@ export default class HTMLIPFSElement extends HTMLElement {
 
   constructor() {
     super();
-    console.log("HTMLIPFSElement constructor")
+    console.debug("HTMLIPFSElement constructor")
   }
 
   connectedCallback() {
-    console.debug('HTMLIPFSElement connectedCallback')
     this.ifNeedCallCidAttributeChangedCallback();
   }
 
   attributeChangedCallback(name: string | number, oldValue: string, newValue: string) {
-    console.debug('HTMLIPFSElement attributeChangedCallback')
     if (name === 'cid' && newValue) {
       this.ifNeedCallCidAttributeChangedCallback();
     }
@@ -49,15 +47,16 @@ export default class HTMLIPFSElement extends HTMLElement {
   }
 
   // 
-  async fetchBlob(cid: CID, mediatype: string): Promise<Blob | null>  {
+  async fetchBlob(cid: CID, mediatype: string): Promise<Blob>  {
     const unixFs = HTMLIPFSConfigElement.unixFs;
-    if(unixFs === null) return null;
+    if(unixFs === null) throw new Error("unixFs is null");
 
     const content = [];
     for await (const chunk of unixFs.cat(cid)) {
       content.push(chunk);
     }
-  
+    if (content.length === 0) throw new Error("No content found for the given CID");
+
     return new Blob(content, { type: mediatype });
   }
 }

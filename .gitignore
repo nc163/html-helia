@@ -5,6 +5,6 @@
 coverage
 **/dist/
 **/node_modules/
-**/example/public/js/index.js
+**/example/public/js
 
 .ipfs
