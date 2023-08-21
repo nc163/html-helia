@@ -2,5 +2,6 @@ import defineCustomElements from './defineCustomElements';
 import HTMLIPFSConfigElement from './HTMLIPFSConfigElement';
 import HTMLIPFSElement from './HTMLIPFSElement';
 
-export default defineCustomElements;
+defineCustomElements();
+
 export { HTMLIPFSConfigElement, HTMLIPFSElement };

@@ -8,6 +8,7 @@ export default class HTMLIPFSConfigElement extends HTMLElement {
 
   constructor() {
     super(); 
+    console.log("HTMLIPFSConfigElement constructor")
   }
 
   async fetchBlob(cid: CID, mediatype: string): Promise<Blob | null>  {

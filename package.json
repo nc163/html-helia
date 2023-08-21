@@ -11,27 +11,32 @@
     "type": "git",
     "url": "http://github.com/nc163/html-ipfs.git"
   },
-  "types": "dist/",
+  "types": "dist/index.d.ts",
   "type": "module",
+  "files": [
+    "dist",
+    "src"
+  ],
   "scripts": {
-    "build": "npm run build:core",
-    "test": "npm run test:core",
-    "test:core": "npm run test --prefix packages/core",
-    "build:core": "npm run build --prefix packages/core",
-    "build:html-ipfs-element": "npm run build --prefix packages/html-ipfs-element"
   },
   "keywords": [
     "browser",
     "ipfs",
     "dapps"
   ],
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=7.0.0"
+  },
+  "dependencies": {
+    "@helia/unixfs": "^1.4.1",
+    "helia": "^2.0.1"
+  },
   "devDependencies": {
-    "@types/jest": "^29.5.3",
-    "@types/node": "^18.16.3",
-    "esmify": "^2.1.1",
     "rimraf": "^5.0.0"
   },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "browserify-shim": {}
 }

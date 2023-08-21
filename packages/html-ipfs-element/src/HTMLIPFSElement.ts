@@ -11,7 +11,8 @@ export default class HTMLIPFSElement extends HTMLElement {
   }
 
   constructor() {
-    super(); 
+    super();
+    console.log("HTMLIPFSElement constructor")
   }
 
   connectedCallback() {
