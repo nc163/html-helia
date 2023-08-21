@@ -11,10 +11,9 @@
   ],
   "scripts": {
     "build": "rimraf dist && tsc -p tsconfig.json",
-    "example": "npm run browser:transcompile && npm run browser:bundle",
-    "browser": "node example/run.js",
-    "browser:transcompile": "npm run build",
-    "browser:bundle": "rimraf example/public/js && rollup -c"
+    "debug": "npm run :transcompile && npm run :bundle && node example/run.js",
+    ":transcompile": "npm run build",
+    ":bundle": "rimraf example/public/js && rollup -c"
   },
   "dependencies": {
     "@helia/unixfs": "^1.4.1",

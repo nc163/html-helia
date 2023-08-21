@@ -8,5 +8,7 @@ export default {
     format: 'esm',
     inlineDynamicImports: true
   },
-  plugins: [resolve()],
+  plugins: [resolve({
+    /* */
+  })],
 };
