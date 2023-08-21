@@ -1,5 +1,4 @@
 import type { UnixFS } from '@helia/unixfs'
-import type { CID } from 'multiformats/cid'
 
 //
 export default class HTMLIPFSConfigElement extends HTMLElement {
@@ -12,5 +11,16 @@ export default class HTMLIPFSConfigElement extends HTMLElement {
 
   getIPFSInstance(): UnixFS | null {
     return HTMLIPFSConfigElement.unixFs;
+  }
+
+  static dispatchUnixFsUpdated() {
+    const event = new CustomEvent('HTMLIPFSConfigElement::unixfsUpdated', {
+      detail: { unixFs: HTMLIPFSConfigElement.unixFs },
+      bubbles: true,
+      cancelable: true
+    });
+
+    // イベントを発火
+    document.dispatchEvent(event);
   }
 }
