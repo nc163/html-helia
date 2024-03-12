@@ -8,3 +8,5 @@ coverage
 **/example/public/js
 
 .ipfs
+
+tmp

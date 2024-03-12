@@ -1,6 +1,0 @@
-# core
-
-```javascript
-
-
-```
