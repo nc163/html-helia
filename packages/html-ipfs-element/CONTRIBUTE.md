@@ -16,7 +16,7 @@ https://github.com/WICG/webcomponents/issues/509
 
 これを実行時に発生するエラーについて
 ```bash
-> @ipfs-tag/html-ipfs-element@1.0.0 :bundle
+> @ipfs-tag/html-ipfs-data-attributes-element@1.0.0 :bundle
 > rimraf example/public/js && rollup -c
 
 

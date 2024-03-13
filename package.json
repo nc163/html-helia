@@ -1,15 +1,15 @@
 {
-  "name": "html-ipfs",
-  "description": "html-ipfs is a library for fetch data from IPFS and displaying it on a web page.",
+  "name": "html-ipfs-data-attributes",
+  "description": "html-ipfs-data-attributes is a library for fetch data from IPFS and displaying it on a web page.",
   "version": "0.0.7",
-  "homepage": "https://github.com/nc163/html-ipfs",
+  "homepage": "https://github.com/nc163/html-ipfs-data-attributes",
   "bugs": {
-    "url": "https://github.com/nc163/html-ipfs/issues"
+    "url": "https://github.com/nc163/html-ipfs-data-attributes/issues"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "http://github.com/nc163/html-ipfs.git"
+    "url": "http://github.com/nc163/html-ipfs-data-attributes.git"
   },
   "types": "dist/index.d.ts",
   "type": "module",

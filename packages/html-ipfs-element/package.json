@@ -1,5 +1,5 @@
 {
-  "name": "@ipfs-tag/html-ipfs-element",
+  "name": "@ipfs-tag/html-ipfs-data-attributes-element",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
