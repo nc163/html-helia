@@ -1,31 +1,33 @@
 {
-  "name": "html-ipfs-data-attributes",
-  "description": "html-ipfs-data-attributes is a library for fetch data from IPFS and displaying it on a web page.",
-  "version": "0.0.7",
-  "homepage": "https://github.com/nc163/html-ipfs-data-attributes",
+  "name": "html-helia",
+  "description": "Obtain and display data to be displayed on HTML from IPFS network.",
+  "version": "0.0.8",
+  "homepage": "https://github.com/nc163/html-helia",
   "bugs": {
-    "url": "https://github.com/nc163/html-ipfs-data-attributes/issues"
+    "url": "https://github.com/nc163/html-helia/issues"
   },
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "http://github.com/nc163/html-ipfs-data-attributes.git"
+    "url": "http://github.com/nc163/html-helia.git"
   },
   "types": "dist/index.d.ts",
   "type": "module",
   "files": [
-    "dist",
     "src"
   ],
   "scripts": {
-    "build": "webpack --config webpack.example.config.cjs",
-    "clean": "rimraf dist",
-    "dev": "node example/server.cjs"
+    "build": "webpack --config webpack.config.cjs",
+    "build:dev": "webpack --config webpack.example.config.cjs",
+    "dev": "node example/server.cjs",
+    "clean": "rimraf docs/js/*, example/public/js/*"
   },
   "keywords": [
     "browser",
     "ipfs",
-    "dapps"
+    "helia",
+    "dapps",
+    "tag"
   ],
   "engines": {
     "node": ">=16.0.0",
@@ -33,7 +35,7 @@
   },
   "dependencies": {
     "@helia/unixfs": "^3.0.1",
-    "media-typer": "^1.1.0"
+    "media-type": "^0.3.1"
   },
   "peerDependencies": {
     "helia": "^4.0.2"

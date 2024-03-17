@@ -4,31 +4,35 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Example</title>
-  <script src="https://unpkg.com/helia/dist/index.min.js"></script>
+  <script src="https://unpkg.com/helia/dist/index.min.js" fetchpriority="high"></script>
   <script type="text/javascript" src="/js/bundle.js" type="module"></script>
   <script type="module">    
     window.onload = async function () {
-      let helia = await Helia.createHelia();
-      let htmlIpfs = new HtmlIpfs(helia);
+      let helia = await Helia.createHelia()
+      let htmlIpfs = new HtmlIpfs( await Helia.createHelia() );
 
-      let children = document.querySelector('div').children;
+      let children = document.querySelector('body').children;
       for (let i = 0; i < children.length; i++) {
-        await htmlIpfs.fetch(children[i]);
+        let element = children[i];
+        element.addEventListener('html-ipfs-status-change', function(event, data, status) {
+          if("complete" != event.detail.status) return;
+          for (let j = 0; j < event.target.children.length; j++) {
+            htmlIpfs.fetch(event.target.children[j]);
+          }
+        });
+      }
+
+      for (let i = 0; i < children.length; i++) {
+        let element = children[i];
+        htmlIpfs.fetch(element);
       }
     }
   </script>
 </head>
 <body>
-  <div>
-    <p data-ipfs-cid="QmUNj7U2ABqW2kARCZXTR3j2spkGzYwMHyju2AaxWKP9XG" data-ipfs-mediatype="text/plain" ></p>
-    <p data-ipfs-cid="QmZvHdMN86NNY4Z4fhuLtWxzRzja4z6DPR6xRJiEwChzGp" data-ipfs-mediatype="text/plain" ></p>
-    <img data-ipfs-cid="QmQqzMTavQgT4f4T5v6PWBp7XNKtoPmC9jvn12WPT3gkSE" data-ipfs-mediatype="image/png" src="" alt="example" />
-    <p data-ipfs-cid="QmWMwxW9K51pWAkYuxH9wQeNZM8FPe9kndEiBxFqqV2Mi1" data-ipfs-mediatype="text/plain" ></p>
-    <audio data-ipfs-cid="QmWysB47sX9L4EHUMoEAowxhqqdAqNiKNVqT7ds1iviTvm" data-ipfs-mediatype="audio/mp3" controls ></audio>
-    <audio data-ipfs-cid="QmPcY4qe9vr3CA3HgXANaBVQEkWeJsBT4zGiffuJ2GKjCv" data-ipfs-mediatype="audio/wav" controls ></audio>
-    <p data-ipfs-cid="QmYz5mj75JU14GhhcqkRzp1SwBAE2XEDHB1LB7sJHUUncY" data-ipfs-mediatype="text/plain" ></p>
-    <video data-ipfs-cid="QmTca4A43f4kEvzTouvYTegtp6KobixRqweV12NrvwwtFP" data-ipfs-mediatype="video/mp4" controls width="320" height="240" ></video>
-    <p data-ipfs-cid="QmQLo3Jv4v78TsDRcSX2om3dMGf7d682dDMZfcdVeC4p15" data-ipfs-mediatype="text/plain" ></p>
-  </div>
+  <p data-ipfs-cid="QmUNj7U2ABqW2kARCZXTR3j2spkGzYwMHyju2AaxWKP9XG" data-ipfs-media-type="text/plain"></p>
+  <div data-ipfs-cid="QmRk5AQ4xU8huvZC9hU7YKSExhsaTJ2AzJQE8fkJCoPEPH" data-ipfs-media-type="text/html"></div>
+  <script data-ipfs-cid="QmajWeQ5JSuGaM6nHNedarsML5yNg5qcNQv9waqYG1Vuzb" data-ipfs-media-type="text/javascript">
+  </script>
 </body>
 </html>

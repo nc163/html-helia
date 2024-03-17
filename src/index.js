@@ -1,82 +1,67 @@
-import { CID } from 'multiformats/cid'
-import MediaTyper from 'media-typer';
 import { unixfs } from '@helia/unixfs';
+
+import { permit, setLoading, setError, setComplete } from './element.js';
+import { decode } from './decode.js';
+import { binding } from './binding/index.js';
 
 export default class {
 
   _unixFs = null;
 
+  /**
+   * @param {import('@helia').Helia} helia
+   * 
+   */
   constructor(helia) {
     this._unixFs = unixfs(helia)
   }
 
-  async fetch(element) {
-    if(!this._valid(element)) return false;
+  /**
+   * 
+   *
+   * @param {import('multiformats/cid').CID} cid
+   * @return {ArrayBuffer}
+   * @throws {Error} 
+   * @private
+   */
+  _get_use_unixfs = async (cid) => {
+    const buffer = [];
+    for await (const chunk of this._unixFs.cat(cid)) {
+      buffer.push(chunk);
+    }
+    if (0 === buffer.length) throw new Error("No content found for the given CID");
 
-    let cid        = CID.parse(element.dataset.ipfsCid);
-    let mediatyper = MediaTyper.parse(element.dataset.ipfsMediatype);
-    let blob = await this._fetch_blob(cid, element.dataset.ipfsMediatype);
-    if(!blob) return false;
-
-    return await this._append_obj(element, mediatyper, blob);
+    return buffer
   }
 
-  //
-  _valid(element) {
-    if(!element.dataset.ipfsCid) return false
-    
-    let cid       = element.dataset.ipfsCid;
-    let mediatype = element.dataset.ipfsMediatype;
-    try {
-      CID.parse(cid);
-      if(!MediaTyper.test(mediatype)) throw new Error(`Invalid data-mediatype: ${element}`);
+  /**
+   * 
+   * @param {HTMLElement} element
+   * @return {boolean} 
+   * @public
+   */
+  fetch = async (element) => {
+    let params = permit(element);
 
-      return true
-    } catch (err) {
-      console.error(err)
-      return false
-    }
-  }
-
-  //
-  async _fetch_blob(cid, mediatype) {
+    setLoading(element);
 
     try {
-      const content = [];
-      for await (const chunk of this._unixFs.cat(cid)) {
-        content.push(chunk);
-      }
-      if (content.length === 0) throw new Error("No content found for the given CID");
+      if(false === params.isValid()) throw new Error('Invalid Params');
 
-      let blob = new Blob(content, { type: mediatype });
-      return blob
-    } catch (err) {
-      console.error(err)
-      return false
-    }
-  }
+      let buffer = await this._get_use_unixfs(params.cid);
+      let blob = decode(buffer, params.media)
+      await binding(element, blob, params.media);
 
-  //
-  async _append_obj(element, mediatyper, blob) {
-    try {
-      switch(mediatyper.type) {
-        case 'audio':
-        case 'video':
-        case 'image':
-          element.src = URL.createObjectURL(blob);
-          break;
-        case 'text':
-          let text = await blob.text()
-          element.innerHTML = text;
-          break;
-        default:
-          console.error(`Unsupported media type: ${mediatyper.type}`)
-      }
-      return true
     } catch (err) {
-      console.error(err)
-      return false
+      setError(element, err);
+      return false;
+
     }
+
+    setComplete(element);
+    return true
   }
 
 }
+
+export { EventName } from './event.js';
