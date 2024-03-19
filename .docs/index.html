@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Example</title>
-  <base href="https://www.example.com/" />
+  <base href="https://nc163.github.io/html-helia/" />
   <script src="https://unpkg.com/helia/dist/index.min.js"></script>
-  <script type="text/javascript" src="/html-ipfs-data-attributes/js/bundle.js" type="module"></script>
+  <script type="text/javascript" src="/js/bundle.js" type="module"></script>
   <script type="module">    
     window.onload = async function () {
       let helia = await Helia.createHelia();
@@ -14,7 +14,7 @@
 
       let children = document.querySelector('div').children;
       for (let i = 0; i < children.length; i++) {
-        await htmlIpfs.fetch(children[i]);
+        htmlIpfs.fetch(children[i]);
       }
     }
   </script>

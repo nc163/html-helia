@@ -1,12 +1,20 @@
 *.local
 .DS_Store
-.eslintcache
+tmp
 
+# 
 coverage
-**/dist/
 **/node_modules/
 **/example/public/js
 
+#
+.node-version
+
+#
+.docs/*
+!.docs/index.html
+!.docs/img
+
+#
 .ipfs
 
-tmp

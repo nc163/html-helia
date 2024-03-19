@@ -6,7 +6,7 @@ module.exports = {
     Library: './src/index.js'
   },
   output: {
-    path: path.resolve(__dirname, 'docs/js'),
+    path: path.resolve(__dirname, '.docs/js'),
     filename: 'bundle.js',
     library: {
 			name: 'HtmlIpfs',
