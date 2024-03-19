@@ -11,9 +11,9 @@ coverage
 .node-version
 
 #
-.docs/*
-!.docs/index.html
-!.docs/img
+public/*
+!public/index.html
+!public/img
 
 #
 .ipfs
