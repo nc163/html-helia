@@ -3,6 +3,7 @@ on:
   push:
     branches: 
       - 'main'
+  workflow_dispatch:
 
 concurrency:
   group: "pages"
@@ -13,25 +14,33 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: 'ubuntu-latest'
+    
+    runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
       - name: Setup Pages
         uses: actions/configure-pages@v1
+
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: 18
+          
       - name: Install
         run: npm install
+
       - name: Build
         run: npm run build
-      - name: Upload
-        uses: actions/upload-pages-artifact@v1
+
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v3
         with:
           publish_dir: ./public
+
       - name: Deploy
         id: deployment
-        uses: actions/deploy-pages@main
+        uses: actions/deploy-pages@v1
 
