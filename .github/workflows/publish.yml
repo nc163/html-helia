@@ -9,7 +9,10 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  build:
+  publish:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: 'ubuntu-latest'
     steps:
       - name: Checkout
@@ -19,7 +22,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version: 18
       - name: Install
         run: npm install
       - name: Build
