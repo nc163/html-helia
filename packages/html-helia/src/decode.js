@@ -1,5 +1,5 @@
 /**
- * 
+ *
  *
  * @param {ArrayBuffer} content
  * @param {import('media-type')} media
@@ -8,5 +8,5 @@
  * @public
  */
 export const decode = (content, media) => {
-  return new Blob(content, { type: media.asString() });
+  return new Blob(content, { type: media.asString() })
 }

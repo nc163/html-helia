@@ -1,1 +1,1 @@
-export const EventName = 'html-ipfs-status-change';
+export const EventName = 'html-ipfs-status-change'
