@@ -17,12 +17,14 @@
   ],
   "scripts": {
     "dev": "node example/server.cjs",
-    "build:dev": "webpack --config webpack.dev.config.cjs",
     "build": "webpack --config webpack.config.cjs",
-    "lint:fix": "eslint --cache --fix src/ && prettier --write src/",
-    "lint:fix:html-helia": "npm --prefix packages/html-helia run lint:fix",
-    "lint:fix:all": "npm run lint:fix && npm run lint:fix:html-helia",
-    "clean": "rimraf docs/js/*, example/public/js/*"
+    "debug": "webpack --config webpack.dev.config.cjs",
+    "lint": "eslint --cache --fix src/ && prettier --write src/",
+    "lint:html-helia": "npm --prefix packages/html-helia run lint",
+    "lint:all": "npm run lint && npm run lint:html-helia",
+    "clean": "rimraf docs/js/*, example/public/js/*",
+    "clean:html-helia": "npm --prefix packages/html-helia run clean",
+    "clean:all": "npm run clean && npm run clean:html-helia"
   },
   "keywords": [
     "browser",
