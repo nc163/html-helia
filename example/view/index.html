@@ -4,35 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Example</title>
-  <script src="https://unpkg.com/helia/dist/index.min.js" fetchpriority="high"></script>
   <script type="text/javascript" src="/js/bundle.js" type="module"></script>
-  <script type="module">    
-    window.onload = async function () {
-      let helia = await Helia.createHelia()
-      let htmlIpfs = new HtmlIpfs( await Helia.createHelia() );
-
-      let children = document.querySelector('body').children;
-      for (let i = 0; i < children.length; i++) {
-        let element = children[i];
-        element.addEventListener('html-ipfs-status-change', function(event, data, status) {
-          if("complete" != event.detail.status) return;
-          for (let j = 0; j < event.target.children.length; j++) {
-            htmlIpfs.fetch(event.target.children[j]);
-          }
-        });
-      }
-
-      for (let i = 0; i < children.length; i++) {
-        let element = children[i];
-        htmlIpfs.fetch(element);
-      }
-    }
-  </script>
 </head>
 <body>
   <p data-ipfs-cid="QmUNj7U2ABqW2kARCZXTR3j2spkGzYwMHyju2AaxWKP9XG" data-ipfs-media-type="text/plain"></p>
   <div data-ipfs-cid="QmRk5AQ4xU8huvZC9hU7YKSExhsaTJ2AzJQE8fkJCoPEPH" data-ipfs-media-type="text/html"></div>
-  <script data-ipfs-cid="QmajWeQ5JSuGaM6nHNedarsML5yNg5qcNQv9waqYG1Vuzb" data-ipfs-media-type="text/javascript">
-  </script>
 </body>
 </html>

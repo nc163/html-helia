@@ -1,6 +1,4 @@
 
-export const EventName = 'html-ipfs-status-change';
-
 /**
  * 
  * @param {HTMLElement} target

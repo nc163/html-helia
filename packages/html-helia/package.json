@@ -1,7 +1,7 @@
 {
-  "name": "html-helia",
+  "name": "@html-helia/html-helia",
   "description": "Display data from the IPFS network.",
-  "version": "0.1.0",
+  "version": "0.0.8",
   "homepage": "https://github.com/nc163/html-helia",
   "bugs": {
     "url": "https://github.com/nc163/html-helia/issues"
@@ -16,9 +16,6 @@
     "src"
   ],
   "scripts": {
-    "dev": "node example/server.cjs",
-    "build:dev": "webpack --config webpack.dev.config.cjs",
-    "build": "webpack --config webpack.config.cjs",
     "clean": "rimraf docs/js/*, example/public/js/*"
   },
   "keywords": [
@@ -33,17 +30,15 @@
     "npm": ">=7.0.0"
   },
   "dependencies": {
-    "@html-helia/html-helia": "file:packages/html-helia",
+    "@helia/unixfs": "^3.0.1",
+    "media-type": "^0.3.1",
+    "multiformats": "^13.1.0"
+  },
+  "peerDependencies": {
     "helia": "^4.0.2"
   },
   "devDependencies": {
-    "express": "^4.18.3",
     "karma": "^6.4.3",
-    "rimraf": "^5.0.0",
-    "webpack": "^5.90.3",
-    "webpack-cli": "^5.1.4"
-  },
-  "workspaces": [
-    "./packages/html-helia"
-  ]
+    "rimraf": "^5.0.0"
+  }
 }
