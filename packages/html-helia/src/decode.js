@@ -3,7 +3,7 @@
  *
  * @param {ArrayBuffer} content
  * @param {import('media-type')} media
- * @return {Blob|null}
+ * @return {Blob}
  * @throws {Error}
  * @public
  */
