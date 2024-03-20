@@ -1,9 +1,9 @@
 import { unixfs } from '@helia/unixfs';
 
 import { permit } from './parameter/index.js';
-import { setLoading, setError, setComplete } from './status.js';
 import { decode } from './decode.js';
 import { binding } from './binding/index.js';
+import { onLoadingEvent, onErrorEvent, onCompleteEvent } from './events/index.js';
 
 export default class {
 
@@ -43,7 +43,7 @@ export default class {
   fetch = async (element) => {
     let params = permit(element);
 
-    setLoading(element);
+    onLoadingEvent(element);
 
     try {
       if(false === params.isValid()) throw new Error('Invalid Params');
@@ -53,12 +53,12 @@ export default class {
       await binding(element, blob, params.media);
 
     } catch (err) {
-      setError(element, err);
+      onErrorEvent(element, err);
       return false;
 
     }
 
-    setComplete(element);
+    onCompleteEvent(element);
     return true
   }
 }

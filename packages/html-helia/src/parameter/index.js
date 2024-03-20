@@ -1,2 +1,2 @@
 export { permit } from './permit.js'
-export { PermitParameter } from './PermitParameter.js'
+export { PermitParameter } from './permit_parameter.js'

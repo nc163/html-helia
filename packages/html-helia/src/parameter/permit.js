@@ -5,7 +5,7 @@ import MediaType from 'media-type'
  * 
  *
  * @param {HTMLElement} element
- * @return {import('./PermitParameter.js').PermitParameter} 
+ * @return {import('./permit_parameter.js').PermitParameter} 
  * @public
  */
 export const permit = (element) => {
