@@ -5,7 +5,7 @@ module.exports = {
   resolve: {
     extensions: ['.js'],
     alias: {
-      '@html-helia/html-helia': path.resolve(__dirname, 'packages/html-helia'),
+      '@html-helia/html-helia': path.resolve(__dirname, 'packages/html-helia/src/index.js'),
     },
   },
   entry: {

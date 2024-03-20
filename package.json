@@ -18,10 +18,12 @@
   "scripts": {
     "dev": "node example/server.cjs",
     "build": "webpack --config webpack.config.cjs",
-    "debug": "webpack --config webpack.dev.config.cjs",
+    "debug": "webpack --config webpack.deb.config.cjs",
+    "-- lint --": "",
     "lint": "eslint --cache --fix src/ && prettier --write src/",
     "lint:html-helia": "npm --prefix packages/html-helia run lint",
     "lint:all": "npm run lint && npm run lint:html-helia",
+    "-- clean --": "",
     "clean": "rimraf docs/js/*, example/public/js/*",
     "clean:html-helia": "npm --prefix packages/html-helia run clean",
     "clean:all": "npm run clean && npm run clean:html-helia"
