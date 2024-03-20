@@ -21,7 +21,7 @@
     "build": "webpack --config webpack.config.cjs",
     "lint:fix": "eslint --cache --fix src/ && prettier --write src/",
     "lint:fix:html-helia": "npm --prefix packages/html-helia run lint:fix",
-    "lint:fix:all": "npm run lint:fix:html-helia",
+    "lint:fix:all": "npm run lint:fix && npm run lint:fix:html-helia",
     "clean": "rimraf docs/js/*, example/public/js/*"
   },
   "keywords": [

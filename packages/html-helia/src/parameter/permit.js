@@ -15,11 +15,12 @@ export const permit = (element) => {
     let _cid = element.dataset.ipfsCid
     let _media = element.dataset.ipfsMediaType
 
-    if ('string' != typeof _cid) throw new Error('data-ipfs-cid is not found')
+    if ('string' != typeof _cid)
+      throw new Error(`data-ipfs-cid is not found ${_cid}`)
     let cid = CID.parse(_cid)
 
     if ('string' != typeof _media)
-      throw new Error('data-media-type is not found')
+      throw new Error(`data-media-type is not found ${_media}`)
     let media = MediaType.fromString(_media)
 
     return new PermitParameter(cid, media)
