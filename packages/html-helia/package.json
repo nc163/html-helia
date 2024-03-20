@@ -16,6 +16,7 @@
     "src"
   ],
   "scripts": {
+    "lint:fix": "eslint --cache --fix src/ && prettier --write src/",
     "clean": "rimraf docs/js/*, example/public/js/*"
   },
   "keywords": [
@@ -38,7 +39,10 @@
     "helia": "^4.0.2"
   },
   "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
     "karma": "^6.4.3",
+    "prettier": "3.2.5",
     "rimraf": "^5.0.0"
   }
 }

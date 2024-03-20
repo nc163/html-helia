@@ -2,3 +2,4 @@
 example
 public
 *.log
+.eslintcache
